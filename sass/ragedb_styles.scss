@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+// Set your brand colors
+//$purple: #8A4D76;
+$purple: #6518a5;
+
+// Update Bulma's global variables
+$primary: $purple;
+
+@import "../bulma/bulma.sass";
