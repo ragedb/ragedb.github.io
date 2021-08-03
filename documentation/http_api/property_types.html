@@ -1,0 +1,107 @@
+---
+layout: default
+title: HTTP API - Property Types
+---
+
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Property Types
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-warning">
+        <h4 class="message-header">Property Types</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    RageDB currently supports booleans, 64-bit integers, 64-bit doubles, strings and lists of the preceding data types:
+                </p>
+                <pre><code class="language-html">boolean, integer, double, string, boolean_list, integer_list, double_list, string_list</code></pre>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get a Node Property Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve an existing Node Property Type</p>
+            <pre><code class="language-html">:GET /db/{graph}/schema/nodes/{type}/properties/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/schema/nodes/User/properties/name</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">"string"</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Create a Node Property Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Create a Node Property Type</p>
+            <pre><code class="language-html">:POST /db/{graph}/schema/nodes/{type}/properties/{property}/{data_type}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:POST /db/rage/schema/nodes/User/properties/name/string</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete a Node Property Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete a Node Property Type</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/schema/nodes/{type}/properties/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/schema/nodes/User/properties/age</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get a Relationship Property Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get a Relationship Property Type</p>
+            <pre><code class="language-html">:GET /db/{graph}/schema/relationships/{type}/properties/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">::GET /db/rage/schema/relationships/KNOWS/properties/weight</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">"double"</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Create a Relationship Property Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Create a Relationship Property Type</p>
+            <pre><code class="language-html">:POST /db/{graph}/schema/relationships/{type}/properties/{property}/{data_type}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:POST /db/rage/schema/relationships/KNOWS/properties/weight/double</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete a Relationship Property Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete a Relationship Property Type</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/schema/relationships/{type}/properties/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/schema/relationships/KNOWS/properties/weight</code></pre>
+        </div>
+    </article>
+
+
+
+
+
+
+
+
+</section>

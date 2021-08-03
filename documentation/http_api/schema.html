@@ -2,6 +2,128 @@
 layout: default
 title: HTTP API - Schema
 ---
-<div class="content">
-    <h1>HTTP API - Schema</h1>
-</div>
+
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Schema
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get Node Types</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the existing Node Types as a list of Strings</p>
+            <pre><code class="language-html">:GET /db/{graph}/schema/nodes</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/schema/nodes</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[ "Node", "User" ]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <h4 class="message-header">Get a Node Type</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Retrieve the existing Node Type as map of the properties and property types
+                </p>
+                <pre><code class="language-html">:GET /db/{graph}/schema/nodes/{type}</code></pre>
+                <p>Example Request:</p>
+                <pre><code class="language-html">:GET /db/rage/schema/nodes/User</code></pre>
+                <p>Example Response:</p>
+                <pre><code class="language-javascript">{ "age": "integer", "name": "string", "valid": "boolean" }</code></pre>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <h4 class="message-header">Create a Node Type</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Create a Node Type
+                </p>
+                <pre><code class="language-html">:POST /db/{graph}/schema/nodes/{type}</code></pre>
+                <p>Example Request:</p>
+                <pre><code class="language-html">:POST /db/rage/schema/nodes/User</code></pre>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <h4 class="message-header">Delete a Node Type</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Delete a Node Type
+                </p>
+                <pre><code class="language-html">:DELETE /db/{graph}/schema/nodes/{type}</code></pre>
+                <p>Example Request:</p>
+                <pre><code class="language-html">:DELETE /db/rage/schema/nodes/User</code></pre>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <h4 class="message-header">Get Relationship Types</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Retrieve the existing Relationship Types as a list of Strings
+                </p>
+                <pre><code class="language-html">:GET /db/{graph}/schema/relationships</code></pre>
+                <p>Example Request:</p>
+                <pre><code class="language-html">:GET /db/rage/schema/relationships</code></pre>
+                <p>Example Response:</p>
+                <pre><code class="language-javascript">[ "KNOWS", "LOVES" ]</code></pre>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <h4 class="message-header">Get Relationship Type</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Retrieve the existing Relationship Type as map of the properties and property types
+                </p>
+                <pre><code class="language-html">:GET /db/{graph}/schema/relationships/{type}</code></pre>
+                <p>Example Request:</p>
+                <pre><code class="language-html">:GET /db/rage/schema/relationships/KNOWS</code></pre>
+                <p>Example Response:</p>
+                <pre><code class="language-javascript">{ "weight": "double" }</code></pre>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <h4 class="message-header">Create a Relationship Type</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Create a Relationship Type
+                </p>
+                <pre><code class="language-html">:POST /db/{graph}/schema/relationships/{type}</code></pre>
+                <p>Example Request:</p>
+                <pre><code class="language-html">:POST /db/rage/schema/relationships/KNOWS</code></pre>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <h4 class="message-header">Delete a Relationship Type</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Delete a Relationship Type
+                </p>
+                <pre><code class="language-html">:DELETE /db/{graph}/schema/relationships/{type}</code></pre>
+                <p>Example Request:</p>
+                <pre><code class="language-html">:DELETE /db/rage/schema/relationships/KNOWS</code></pre>
+            </div>
+        </div>
+    </article>
+
+</section>
