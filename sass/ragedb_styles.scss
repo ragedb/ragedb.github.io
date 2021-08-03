@@ -7,3 +7,6 @@ $purple: #6518a5;
 $primary: $purple;
 
 @import "../bulma/bulma.sass";
+
+// Import Extensions
+@import "../bulma/sass/extensions/timeline.sass"
