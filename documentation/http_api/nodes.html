@@ -2,6 +2,103 @@
 layout: default
 title: HTTP API - Nodes
 ---
-<div class="content">
-    <h1>HTTP API - Nodes</h1>
-</div>
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Nodes
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get All Nodes</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve all the existing nodes as an array of maps, default offset of 0 and limit of 100</p>
+            <pre><code class="language-html">:GET /db/{graph}/nodes?limit=100&offset=0</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/schema/nodes?limit=100&offset=0</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[{"id": 1026, "type": "User", "key": "Helene", "properties": { "age": 41, "name": "helene" }},{"id": 1027, "type": "Person", "key": "Max", "properties": { "age": 42, "name": "max" }}]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get All Nodes of a Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve all the existing nodes of a particular type as an array of maps, default offset of 0 and limit of 100</p>
+            <pre><code class="language-html">:GET /db/{graph}/nodes/{type}?limit=100&offset=0</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/schema/nodes/User?limit=100&offset=0</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[{"id": 1026, "type": "User", "key": "Helene", "properties": { "age": 41, "name": "helene" }}]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get A Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve an existing node by their type and key as a map</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/node/User/Helene</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{"id": 1026, "type": "User", "key": "Helene", "properties": { "age": 41, "name": "helene" }}</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get A Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve an existing node by their id as a map</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/node/1026</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{"id": 1026, "type": "User", "key": "Helene", "properties": { "age": 41, "name": "helene" }}</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Create A Node</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Crate a new node with a JSON formatted Body: {properties}</p>
+            <pre><code class="language-html">:POST /db/{graph}/node/{type}/{key}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:POST /db/rage/node/User/Max { "name":"max", "age":42 }</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{"id": 1027, "type": "Person", "key": "Max", "properties": { "age": 42, "name": "max" }}</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete A Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete an existing node by their type and key</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/node/{type}/{key}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/node/User/Max</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete A Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete an existing node by their id</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/node/{id}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/node/1027</code></pre>
+        </div>
+    </article>
+</section>
