@@ -17,6 +17,17 @@ title: HTTP API - Schema
 <section class="section">
     <article class="message is-primary">
         <div class="message-header">
+            <p>Delete Graph Schema</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Empty the Graph of all its contents</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/schema</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/schema</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
             <p>Get Node Types</p>
         </div>
         <div class="message-body is-dark">
