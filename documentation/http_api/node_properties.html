@@ -2,6 +2,186 @@
 layout: default
 title: HTTP API - Node Properties
 ---
-<div class="content">
-    <h1>HTTP API - Node Properties</h1>
-</div>
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Node Properties
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Properties of a Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the properties of an existing node by their type and key</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/properties</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/node/User/Helene/properties</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "age": 41, "name": "helene" }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Properties of a Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the properties of an existing node by their id</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/properties</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/node/1026/properties</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "age": 41, "name": "helene" }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Reset the Properties of a Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Reset the properties of an existing node by their type and key</p>
+            <pre><code class="language-html">:POST /db/{graph}/node/{type}/{key}/properties {properties}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:POST /db/rage/node/User/Helene/properties {"awesome":true}</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "awesome":true }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Reset the Properties of a Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Reset the properties of an existing node by their id</p>
+            <pre><code class="language-html">:POST  /db/{graph}/node/{id}/properties {properties}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:POST /db/rage/node/1026/properties { "age": 41, "name": "helene" }</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "age": 41, "name": "helene" }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Set some Properties of a Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Set some properties while keeping existing properties of an existing node by their type and key</p>
+            <pre><code class="language-html">:PUT /db/{graph}/node/{type}/{key}/properties {properties}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:PUT /db/rage/node/User/Helene/properties { "awesome":true }</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "age": 41, "name": "helene", "awesome":true }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Set some Properties of a Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Set some properties while keeping existing properties of an existing node by their id</p>
+            <pre><code class="language-html">:PUT /db/{graph}/node/{id}/properties {properties}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:PUT /db/rage/node/1026/properties { "awesome":true }</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "age": 41, "name": "helene", "awesome":true }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete the Properties of a Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete all of the Properties of a Node By Type and Key</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/node/{type}/{key}/properties</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/node/User/Helene/properties</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete all of the Properties of a Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Reset the properties of an existing node by their id</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/node/{id}/properties</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/node/1026/properties</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get a Property of a Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get a property of an existing node by their type and key</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/property/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/node/User/Helene/property/name</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "name": "helene" }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get a Property of a Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get a property of an existing node by their id</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/property/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/node/1026/property/age</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "age": 41 }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Set a Property of a Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Set a new or existing Property of an existing node by their type and key</p>
+            <pre><code class="language-html">:PUT /db/{graph}/node/{type}/{key}/property/{property} {value}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:PUT /db/rage/node/User/Helene/property/age {42}</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Set a Property of a Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Set a new or existing Property of a Node by their id</p>
+            <pre><code class="language-html">:PUT /db/{graph}/node/{id}/properties</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:PUT /db/rage/node/1026/property/age {42}</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete a Property of a Node By Type and Key</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete a property of an existing node by their type and key</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/node/{type}/{key}/property/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/node/User/Helene/properties/age</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete a Property of a Node By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete a property of an existing node by their id</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/node/{id}/property/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/node/1026/properties/age</code></pre>
+        </div>
+    </article>
+</section>

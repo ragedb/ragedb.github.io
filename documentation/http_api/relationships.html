@@ -2,6 +2,120 @@
 layout: default
 title: HTTP API - Relationships
 ---
-<div class="content">
-    <h1>HTTP API - Relationships</h1>
-</div>
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Relationships
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get All Relationships</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve all the existing relationships as an array of maps, default offset of 0 and limit of 100</p>
+            <pre><code class="language-html">:GET /db/{graph}/relationships?limit=100&offset=0</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/relationships?limit=100&offset=0</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": {} }]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get All Relationships of a Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve all the existing relationships of a particular type as an array of maps, default offset of 0 and limit of 100</p>
+            <pre><code class="language-html">:GET /db/{graph}/relationships/{type}?limit=100&offset=0</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/relationships/LOVES?limit=100&offset=0</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": {} }]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get A Relationship</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve an existing relationships by their id</p>
+            <pre><code class="language-html">:GET /db/{graph}/relationship/{id}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/relationships/1026</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": {} }]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Create A Relationship By Node Types and Keys</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Create a new relationship of two nodes by their type and key</p>
+            <pre><code class="language-html">:POST /db/{graph}/node/{type_1}/{key_1}/relationship/{type_2}/{key_2}/{rel_type} {properties}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:POST /db/rage/node/User/Helene/relationship/User/Max/LOVES { "strength": 1.0 }</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": { "strength": 1.0 } }]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Create A Relationship By Node Ids</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Create a new relationship of two nodes by their type and key</p>
+            <pre><code class="language-html">:POST /db/{graph}/node/{id_1}/relationship/{id_2}/{rel_type}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:POST /db/rage/node/1026/relationship/1027/LOVES { "strength": 1.0 }</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": { "strength": 1.0 } }]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete A Relationship</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete an existing relationships by their id</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/relationship/{id}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/relationships/1026</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Relationships of a Node By Node Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the Relationships of a Node By Node Type and Key</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/relationships</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/relationships/{direction [all, in, out]}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/relationships/{direction [all, in, out]}/{type TYPE_ONE}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/relationships/{direction [all, in, out]}/{type(s) TYPE_ONE&TYPE_TWO}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/node/User/Helene/relationships/out/LOVE&HATE</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Relationships of a Node By  Node Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the Relationships of a Node By Node Type and Key</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/relationships</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/relationships/{direction [all, in, out]}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/relationships/{direction [all, in, out]}/{type TYPE_ONE}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/relationships/{direction [all, in, out]}/{type(s) TYPE_ONE&TYPE_TWO}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/node/1026/relationships/out/LOVE&HATE</code></pre>
+        </div>
+    </article>
+</section>
