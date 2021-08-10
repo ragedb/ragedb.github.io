@@ -2,6 +2,48 @@
 layout: default
 title: HTTP API - Node Degrees
 ---
-<div class="content">
-    <h1>HTTP API - Node Degrees</h1>
-</div>
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Node Degrees
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Degree of a Node By Node Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the number of relationships an existing node has by type and key</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/degree</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/degree/{direction [all, in, out]}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/degree/{direction [all, in, out]}/{type TYPE_ONE}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/degree/{direction [all, in, out]}/{type(s) TYPE_ONE&TYPE_TWO}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/nodes/User/max/degree/all/LOVES</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "degree": 3 }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Degree of a Node By Node Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the number of relationships an existing node has by id</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/degree</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/degree/{direction [all, in, out]}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/degree/{direction [all, in, out]}/{type TYPE_ONE}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/degree/{direction [all, in, out]}/{type(s) TYPE_ONE&TYPE_TWO}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/nodes/1026/degree/all/LOVES</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "degree": 3 }</code></pre>
+        </div>
+    </article>
+</section>

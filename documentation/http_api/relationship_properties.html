@@ -2,6 +2,101 @@
 layout: default
 title: HTTP API - Relationship Properties
 ---
-<div class="content">
-    <h1>HTTP API - Relationship Properties</h1>
-</div>
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Relationship Properties
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Properties of a Relationship By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the properties of an existing relationship by their id</p>
+            <pre><code class="language-html">:GET /db/{graph}/relationship/{id}/properties</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/relationship/1026/properties</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "weight": 1.0 }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Reset the Properties of a Relationship By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Reset the properties of an existing relationship by their id</p>
+            <pre><code class="language-html">:POST  /db/{graph}/relationship/{id}/properties {properties}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:POST /db/rage/relationship/1026/properties { "weight": 0.5, "valid": true }</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "weight": 0.5, "valid": true }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Set some Properties of a Relationship By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Set some properties while keeping existing properties of an existing relationship by their id</p>
+            <pre><code class="language-html">:PUT /db/{graph}/relationship/{id}/properties {properties}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:PUT /db/rage/relationship/1026/properties { "awesome":true }</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "weight": 1.0, "awesome":true }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete all of the Properties of a Relationship By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Reset the properties of an existing relationship by their id</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/relationship/{id}/properties</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/relationship/1026/properties</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get a Property of a Relationship By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get a property of an existing relationship by their id</p>
+            <pre><code class="language-html">:GET /db/{graph}/relationship/{id}/property/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/relationship/1026/property/weight</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">{ "weight": 1.0 }</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Set a Property of a Relationship By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Set a new or existing Property of a relationship by their id</p>
+            <pre><code class="language-html">:PUT /db/{graph}/relationship/{id}/properties</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:PUT /db/rage/relationship/1026/property/weight {0.7}</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Delete a Property of a Relationship By Id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete a property of an existing relationship by their id</p>
+            <pre><code class="language-html">:DELETE /db/{graph}/relationship/{id}/property/{property}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:DELETE /db/rage/relationship/1026/properties/weight</code></pre>
+        </div>
+    </article>
+</section>

@@ -2,6 +2,49 @@
 layout: default
 title: HTTP API - Node Neighbors
 ---
-<div class="content">
-    <h1>HTTP API - Node Neighbors</h1>
-</div>
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Node Neighbors
+        </p>
+    </div>
+</section>
+
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Neighbors of a Node By Node Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the neighbors an existing node has by type and key</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/neighbors</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/neighbors/{direction [all, in, out]}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/neighbors/{direction [all, in, out]}/{type TYPE_ONE}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/neighbors/{direction [all, in, out]}/{type(s) TYPE_ONE&TYPE_TWO}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/nodes/User/max/neighbors/all/LOVES</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[{"id": 1026, "type": "User", "key": "Helene", "properties": { "age": 41, "name": "helene" }}]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the Neighbors of a Node By Node ID</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the neighbors an existing node has by id</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/neighbors</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/neighbors/{direction [all, in, out]}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/neighbors/{direction [all, in, out]}/{type TYPE_ONE}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/neighbors/{direction [all, in, out]}/{type(s) TYPE_ONE&TYPE_TWO}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/nodes/1027/neighbors/all/LOVES</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[{"id": 1026, "type": "User", "key": "Helene", "properties": { "age": 41, "name": "helene" }}]</code></pre>
+        </div>
+    </article>
+</section>
