@@ -1,0 +1,32 @@
+---
+layout: default
+title: Lua API - Property Types
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            Lua API
+        </p>
+        <p class="subtitle">
+            Property Types
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Property Types</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Add a property to a Node Type</p>
+            <pre><code class="language-lua">number NodePropertyTypeAdd(string node_type, string property, string data_type)</code></pre>
+            <p>Add a property to a Relationship Type</p>
+            <pre><code class="language-lua">number RelationshipPropertyTypeAdd(string relationship_type, string property, string data_type)</code></pre>
+            <p>Remove a property from a Node Type</p>
+            <pre><code class="language-lua">boolean NodePropertyTypeDelete(string node_type, string property)</code></pre>
+            <p>Remove a property from a Relationship Type</p>
+            <pre><code class="language-lua">boolean RelationshipPropertyTypeDelete(string relationship_type, string property)</code></pre>
+        </div>
+    </article>
+</section>

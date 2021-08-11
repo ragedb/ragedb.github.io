@@ -1,0 +1,46 @@
+---
+layout: default
+title: Lua API - Nodes
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            Lua API
+        </p>
+        <p class="subtitle">
+            Nodes
+        </p>
+    </div>
+</section>
+
+<section class="section">
+<article class="message is-primary">
+    <div class="message-header">
+        <p>Nodes</p>
+    </div>
+    <div class="message-body is-dark">
+        <p>Add a Node with properties</p>
+        <pre><code class="language-lua">number NodeAdd(string type, string key, string json)</code></pre>
+        <p>Add an empty Node</p>
+        <pre><code class="language-lua">number NodeAddEmpty(string type, string key)</code></pre>
+        <p>Get a Node by Type and Key</p>
+        <pre><code class="language-lua">Node NodeGet(string type, string key)</code></pre>
+        <p>Get a Node by Id</p>
+        <pre><code class="language-lua">Node NodeGetById(number id)</code></pre>
+        <p>Get a Node Id by Type and Key</p>
+        <pre><code class="language-lua">number NodeGetId(string type, string key)</code></pre>
+        <p>Get the Key of a Node by Id</p>
+        <pre><code class="language-lua">string NodeGetKey(number id)</code></pre>
+        <p>Get the Type of a Node by Id</p>
+        <pre><code class="language-lua">string NodeGetType(number id)</code></pre>
+        <p>Get the Type Id of a Node by Id</p>
+        <pre><code class="language-lua">number NodeGetTypeId(number id)</code></pre>
+        <p>Remove a Node by Type and Key</p>
+        <pre><code class="language-lua">boolean NodeRemove(string type, string key)</code></pre>
+        <p>Remove a Node by Id</p>
+        <pre><code class="language-lua">boolean NodeRemoveById(number id)</code></pre>
+        <p>Return a list of Nodes by their Node Ids</p>
+        <pre><code class="language-lua">[Node] NodesGet(number[] ids)</code></pre>
+    </div>
+</article>
+</section>

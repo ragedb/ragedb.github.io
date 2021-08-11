@@ -1,0 +1,52 @@
+---
+layout: default
+title: Lua API - Node Properties
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            Lua API
+        </p>
+        <p class="subtitle">
+            Node Properties
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Node Properties</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Delete a Node Property</p>
+            <pre><code class="language-lua">boolean NodePropertyDelete(string type, string key, string property)</code></pre>
+            <p>Delete a Node Property By Id</p>
+            <pre><code class="language-lua">boolean NodePropertyDeleteById(number id, string property)</code></pre>
+            <p>Get a Node Property</p>
+            <pre><code class="language-lua">sol::object NodePropertyGet(string type, string key, string property)</code></pre>
+            <p>Get a Node Property By Id</p>
+            <pre><code class="language-lua">sol::object NodePropertyGetById(number id, string property)</code></pre>
+            <p>Set a Node Property</p>
+            <pre><code class="language-lua">boolean NodePropertySet(string type, string key, string property, sol::object value)</code></pre>
+            <p>Set a Node Property By Id</p>
+            <pre><code class="language-lua">boolean NodePropertySetById(number id, string property, sol::object value)</code></pre>
+            <p>Delete all Node Properties</p>
+            <pre><code class="language-lua">boolean NodePropertiesDelete(string type, string key)</code></pre>
+            <p>Delete all Node Properties By Id</p>
+            <pre><code class="language-lua">boolean NodePropertiesDeleteById(number id)</code></pre>
+            <p>Get a Node Properties</p>
+            <pre><code class="language-lua">sol::object NodePropertiesGet(string type, string key)</code></pre>
+            <p>Get a Node Properties By Id</p>
+            <pre><code class="language-lua">sol::object NodePropertiesGetById(number id)</code></pre>
+            <p>Reset a Node Properties</p>
+            <pre><code class="language-lua">boolean NodePropertiesResetFromJson(string type, string key, string json)</code></pre>
+            <p>Reset a Node Properties By Id</p>
+            <pre><code class="language-lua">boolean NodePropertiesResetFromJsonById(number id, string json)</code></pre>
+            <p>Set some Node Properties</p>
+            <pre><code class="language-lua">boolean NodePropertiesSetFromJson(string type, string key, string json)</code></pre>
+            <p>Set some Node Properties By Id</p>
+            <pre><code class="language-lua">boolean NodePropertiesSetFromJsonById(number id, string json)</code></pre>
+        </div>
+    </article>
+</section>

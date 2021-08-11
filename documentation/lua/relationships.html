@@ -1,0 +1,50 @@
+---
+layout: default
+title: Lua API - Relationships
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            Lua API
+        </p>
+        <p class="subtitle">
+            Relationships
+        </p>
+    </div>
+</section>
+
+<section class="section">
+<article class="message is-primary">
+    <div class="message-header">
+        <p>Relationships</p>
+    </div>
+    <div class="message-body is-dark">
+        <p>Add an empty Relationship</p>
+        <pre><code class="language-lua">number RelationshipAddEmpty(string rel_type, string type1, string key1, string type2, string key2)</code></pre>
+        <p>Add an empty Relationship by Type Id and Node Ids</p>
+        <pre><code class="language-lua">number RelationshipAddEmptyByTypeIdByIds(number rel_type_id, number id1, number id2)</code></pre>
+        <p>Add an empty Relationship by Node Ids</p>
+        <pre><code class="language-lua">number RelationshipAddEmptyByIds(string rel_type, number id1, number id1)</code></pre>
+        <p>Add a Relationship with properties</p>
+        <pre><code class="language-lua">number RelationshipAdd(string rel_type, string type1, string key1, string type2, string key2, string json)</code></pre>
+        <p>Add a Relationship with properties By Type Id and Node Ids</p>
+        <pre><code class="language-lua">number RelationshipAddByTypeIdByIds(number rel_type_id, number id1, number id1, string json)</code></pre>
+        <p>Add a Relationship with properties By Node Ids</p>
+        <pre><code class="language-lua">number RelationshipAddByIds(string rel_type, number id1, number id1, string json)</code></pre>
+        <p>Get a Relationship</p>
+        <pre><code class="language-lua">Relationship RelationshipGet(number id)</code></pre>
+        <p>Return a list of Relationships by their Relationship Ids</p>
+        <pre><code class="language-lua">[Relationship] RelationshipsGet([number ids])</code></pre>
+        <p>Remove a Relationship</p>
+        <pre><code class="language-lua">boolean RelationshipRemove(number id)</code></pre>
+        <p>Get the Type of a Relationship</p>
+        <pre><code class="language-lua">string RelationshipGetType(number id)</code></pre>
+        <p>Get the Type Id of a Relationship</p>
+        <pre><code class="language-lua">number RelationshipGetTypeId(number id)</code></pre>
+        <p>Get the Starting Node Id of a Relationship</p>
+        <pre><code class="language-lua">number RelationshipGetStartingNodeId(number id)</code></pre>
+        <p>Get the Ending Node Id of a Relationship</p>
+        <pre><code class="language-lua">number RelationshipGetEndingNodeId(number id)</code></pre>
+    </div>
+</article>
+</section>
