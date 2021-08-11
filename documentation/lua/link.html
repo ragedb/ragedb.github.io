@@ -1,0 +1,65 @@
+---
+layout: default
+title: Lua API - Link
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            Lua API
+        </p>
+        <p class="subtitle">
+            Link
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-warning">
+        <h4 class="message-header">Link</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Links are returned from Traversal requests starting with NodeGetRelationshipsIds
+                </p>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>node_id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the node id of the Link</p>
+            <pre><code class="language-lua">Link.node_id</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+names = {}
+ids = NodeGetRelationshipsIds("Node", "Max")
+for k=1,#ids do
+    v = ids[k]
+    table.insert(names, NodePropertyGetById(v.node_id, "name"))
+end
+names
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>rel_id</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the relationship id of the Link</p>
+            <pre><code class="language-lua">Link.rel_id</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+weights = {}
+ids = NodeGetRelationshipsIds("Node", "Max")
+for k=1,#ids do
+    v = ids[k]
+    table.insert(names, RelationshipPropertyGetById(v.rel_id, "weight"))
+end
+weights
+            </code></pre>
+        </div>
+    </article>
+</section>

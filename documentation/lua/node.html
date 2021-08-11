@@ -1,0 +1,111 @@
+---
+layout: default
+title: Lua API - Node
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            Lua API
+        </p>
+        <p class="subtitle">
+            Node
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-warning">
+        <h4 class="message-header">Node</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    A Node is returned from requests such as NodeGet, NodeGetById but can also be returned as a list from requests such as NodesGet, NodeGetNeighbors, etc.
+                </p>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getId</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the id of the Node</p>
+            <pre><code class="language-lua">Node.getId</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+node = NodeGet("Node", "Max")
+node.getId
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getTypeId</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the type id of the Node</p>
+            <pre><code class="language-lua">Node.getTypeId</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+node = NodeGet("Node", "Max")
+node.getTypeId
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getType</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the type of the Node</p>
+            <pre><code class="language-lua">Node.getType</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+node = NodeGet("Node", "Max")
+node.getType
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getKey</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the key of the Node</p>
+            <pre><code class="language-lua">Node.getKey</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+node = NodeGet("Node", "Max")
+node.getKey
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getProperties</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the properties of the Node</p>
+            <pre><code class="language-lua">Node.getProperties</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+node = NodeGet("Node", "Max")
+node.getProperties
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getProperty</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve a property of the Node</p>
+            <pre><code class="language-lua">Node.getProperty</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+node = NodeGet("Node", "Max")
+node.getProperty("name")
+            </code></pre>
+        </div>
+    </article>
+</section>

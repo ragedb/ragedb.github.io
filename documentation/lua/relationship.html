@@ -1,0 +1,125 @@
+---
+layout: default
+title: Lua API - Relationship
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            Lua API
+        </p>
+        <p class="subtitle">
+            Relationship
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-warning">
+        <h4 class="message-header">Relationship</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    A Relationship is returned from requests such as RelationshipGet, but can also be returned as a list from requests such as NodeGetRelationships, NodeGetRelationshipsForTypes, etc.
+                </p>
+            </div>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getId</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the id of the Relationship</p>
+            <pre><code class="language-lua">Relationship.getId</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+rel = RelationshipGet(1027)
+rel.getId
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getTypeId</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the type id of the Relationship</p>
+            <pre><code class="language-lua">Relationship.getTypeId</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+rel = RelationshipGet(1027)
+rel.getTypeId
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getType</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the type of the Relationship</p>
+            <pre><code class="language-lua">Relationship.getType</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+rel = RelationshipGet(1027)
+rel.getType
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getStartingNodeId</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the Starting Node Id of the Relationship</p>
+            <pre><code class="language-lua">Relationship.getStartingNodeId</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+rel = RelationshipGet(1027)
+rel.getStartingNodeId
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getEndingNodeId</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the Ending Node Id of the Relationship</p>
+            <pre><code class="language-lua">Relationship.getEndingNodeId</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+rel = RelationshipGet(1027)
+rel.getEndingNodeId
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getProperties</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the properties of the Relationship</p>
+            <pre><code class="language-lua">Relationship.getProperties</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+rel = RelationshipGet(1027)
+rel.getProperties
+            </code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>getProperty</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve a property of the Relationship</p>
+            <pre><code class="language-lua">Relationship.getProperty</code></pre>
+            <p>Example:</p>
+            <pre><code class="language-lua">
+rel = RelationshipGet(1027)
+rel.getProperty("name")
+            </code></pre>
+        </div>
+    </article>
+</section>
