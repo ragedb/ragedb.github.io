@@ -19,10 +19,10 @@ title: HTTP API - Nodes
             <p>Get All Nodes</p>
         </div>
         <div class="message-body is-dark">
-            <p>Retrieve all the existing nodes as an array of maps, default offset of 0 and limit of 100</p>
-            <pre><code class="language-html">:GET /db/{graph}/nodes?limit=100&offset=0</code></pre>
+            <p>Retrieve all the existing nodes as an array of maps, default skip of 0 and limit of 100</p>
+            <pre><code class="language-html">:GET /db/{graph}/nodes?limit=100&skip=0</code></pre>
             <p>Example Request:</p>
-            <pre><code class="language-html">:GET /db/rage/nodes?limit=100&offset=0</code></pre>
+            <pre><code class="language-html">:GET /db/rage/nodes?limit=100&skip=0</code></pre>
             <p>Example Response:</p>
             <pre><code class="language-javascript">[{"id": 1026, "type": "User", "key": "Helene", "properties": { "age": 41, "name": "helene" }},{"id": 1027, "type": "Person", "key": "Max", "properties": { "age": 42, "name": "max" }}]</code></pre>
         </div>
@@ -32,10 +32,10 @@ title: HTTP API - Nodes
             <p>Get All Nodes of a Type</p>
         </div>
         <div class="message-body is-dark">
-            <p>Retrieve all the existing nodes of a particular type as an array of maps, default offset of 0 and limit of 100</p>
-            <pre><code class="language-html">:GET /db/{graph}/nodes/{type}?limit=100&offset=0</code></pre>
+            <p>Retrieve all the existing nodes of a particular type as an array of maps, default skip of 0 and limit of 100</p>
+            <pre><code class="language-html">:GET /db/{graph}/nodes/{type}?limit=100&skip=0</code></pre>
             <p>Example Request:</p>
-            <pre><code class="language-html">:GET /db/rage/nodes/User?limit=100&offset=0</code></pre>
+            <pre><code class="language-html">:GET /db/rage/nodes/User?limit=100&skip=0</code></pre>
             <p>Example Response:</p>
             <pre><code class="language-javascript">[{"id": 1026, "type": "User", "key": "Helene", "properties": { "age": 41, "name": "helene" }}]</code></pre>
         </div>

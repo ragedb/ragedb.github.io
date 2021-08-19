@@ -19,10 +19,10 @@ title: HTTP API - Relationships
             <p>Get All Relationships</p>
         </div>
         <div class="message-body is-dark">
-            <p>Retrieve all the existing relationships as an array of maps, default offset of 0 and limit of 100</p>
-            <pre><code class="language-html">:GET /db/{graph}/relationships?limit=100&offset=0</code></pre>
+            <p>Retrieve all the existing relationships as an array of maps, default skip of 0 and limit of 100</p>
+            <pre><code class="language-html">:GET /db/{graph}/relationships?limit=100&skip=0</code></pre>
             <p>Example Request:</p>
-            <pre><code class="language-html">:GET /db/rage/relationships?limit=100&offset=0</code></pre>
+            <pre><code class="language-html">:GET /db/rage/relationships?limit=100&skip=0</code></pre>
             <p>Example Response:</p>
             <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": {} }]</code></pre>
         </div>
@@ -32,10 +32,10 @@ title: HTTP API - Relationships
             <p>Get All Relationships of a Type</p>
         </div>
         <div class="message-body is-dark">
-            <p>Retrieve all the existing relationships of a particular type as an array of maps, default offset of 0 and limit of 100</p>
-            <pre><code class="language-html">:GET /db/{graph}/relationships/{type}?limit=100&offset=0</code></pre>
+            <p>Retrieve all the existing relationships of a particular type as an array of maps, default skip of 0 and limit of 100</p>
+            <pre><code class="language-html">:GET /db/{graph}/relationships/{type}?limit=100&skip=0</code></pre>
             <p>Example Request:</p>
-            <pre><code class="language-html">:GET /db/rage/relationships/LOVES?limit=100&offset=0</code></pre>
+            <pre><code class="language-html">:GET /db/rage/relationships/LOVES?limit=100&skip=0</code></pre>
             <p>Example Response:</p>
             <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": {} }]</code></pre>
         </div>
