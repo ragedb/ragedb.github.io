@@ -1,6 +1,6 @@
 ---
 layout: default
-title: HTTP API - Lua
+title: HTTP API - Restore
 ---
 <section class="hero">
     <div class="hero-body">
@@ -8,7 +8,7 @@ title: HTTP API - Lua
             HTTP API
         </p>
         <p class="subtitle">
-            Lua
+            Restore
         </p>
     </div>
 </section>
@@ -16,31 +16,13 @@ title: HTTP API - Lua
 <section class="section">
     <article class="message is-primary">
         <div class="message-header">
-            <p>Execute a Lua Script</p>
+            <p>Restore a graph</p>
         </div>
         <div class="message-body is-dark">
-            <p>Execute an ad hoc Lua script, see the Lua methods documentation for more details</p>
-            <pre><code class="language-html">:POST db/{graph}/lua</code></pre>
+            <p>Replay the command log and restore a graph</p>
+            <pre><code class="language-html">:POST db/{graph}/restore</code></pre>
             <p>Example Request:</p>
-            <pre><code class="language-html">:POST /db/rage/lua Request Body: "script"</code></pre>
-            The script must end in one or more values that will be returned in JSON format inside an Array.
-            Within the script the user can access to graph functions. For example:
-            <pre><code class="language-javascript">
-a = NodeGetId("Node","Max")
-b = NodeTypesGetCount()
-c = NodeTypesGetCountByType("Node")
-d = NodePropertyGet("Node", "Max", "name")
-e = NodePropertyGetById(a, "name")
-a, b, c, d, e</code></pre>
-            <p>Another example to get the names of the nodes related to Node Max:</p>
-            <pre><code class="language-javascript">
-names = {}
-ids = NodeGetRelationshipsIds("Node", "Max")
-for k=1,#ids do
-    v = ids[k]
-    table.insert(names, NodePropertyGetById(v.node_id, "name"))
-end
-names</code></pre>
+            <pre><code class="language-html">:POST /db/rage/restore </code></pre>
         </div>
     </article>
 </section>
