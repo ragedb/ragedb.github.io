@@ -1,0 +1,50 @@
+---
+layout: default
+title: HTTP API - Node Connected
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            HTTP API
+        </p>
+        <p class="subtitle">
+            Node Connected
+        </p>
+    </div>
+</section>
+
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the directly connected Relationship(s) of two Nodes By Node Type</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the relationships between two existing nodes by type and key</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/connected</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/connected/{direction [all, in, out]}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/connected/{direction [all, in, out]}/{type TYPE_ONE}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{type}/{key}/connected/{direction [all, in, out]}/{type(s) TYPE_ONE&TYPE_TWO}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/nodes/User/max/connected/all/LOVES</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": {} }]</code></pre>
+        </div>
+    </article>
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Get the directly connected Relationship(s) of two Nodes By Node ID</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Retrieve the relationships between two existing nodes by id</p>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/connected</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/connected/{direction [all, in, out]}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/connected/{direction [all, in, out]}/{type TYPE_ONE}</code></pre>
+            <pre><code class="language-html">:GET /db/{graph}/node/{id}/connected/{direction [all, in, out]}/{type(s) TYPE_ONE&TYPE_TWO}</code></pre>
+            <p>Example Request:</p>
+            <pre><code class="language-html">:GET /db/rage/nodes/1027/connected/all/LOVES</code></pre>
+            <p>Example Response:</p>
+            <pre><code class="language-javascript">[ {"id": 1026, "type": "LOVES", "from": 1026, "to": 1027, "properties": {} }]</code></pre>
+        </div>
+    </article>
+</section>
