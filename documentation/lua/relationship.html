@@ -30,11 +30,11 @@ title: Lua API - Relationship
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the id of the Relationship</p>
-            <pre><code class="language-lua">Relationship.getId</code></pre>
+            <pre><code class="language-lua">Number Relationship:getId()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 rel = RelationshipGet(1027)
-rel.getId
+rel:getId()
             </code></pre>
         </div>
     </article>
@@ -44,11 +44,11 @@ rel.getId
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the type id of the Relationship</p>
-            <pre><code class="language-lua">Relationship.getTypeId</code></pre>
+            <pre><code class="language-lua">Number Relationship:getTypeId()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 rel = RelationshipGet(1027)
-rel.getTypeId
+rel:getTypeId()
             </code></pre>
         </div>
     </article>
@@ -58,11 +58,11 @@ rel.getTypeId
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the type of the Relationship</p>
-            <pre><code class="language-lua">Relationship.getType</code></pre>
+            <pre><code class="language-lua">String Relationship:getType()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 rel = RelationshipGet(1027)
-rel.getType
+rel:getType()
             </code></pre>
         </div>
     </article>
@@ -72,11 +72,11 @@ rel.getType
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the Starting Node Id of the Relationship</p>
-            <pre><code class="language-lua">Relationship.getStartingNodeId</code></pre>
+            <pre><code class="language-lua">Number Relationship:getStartingNodeId()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 rel = RelationshipGet(1027)
-rel.getStartingNodeId
+rel:getStartingNodeId()
             </code></pre>
         </div>
     </article>
@@ -86,11 +86,11 @@ rel.getStartingNodeId
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the Ending Node Id of the Relationship</p>
-            <pre><code class="language-lua">Relationship.getEndingNodeId</code></pre>
+            <pre><code class="language-lua">Number Relationship:getEndingNodeId()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 rel = RelationshipGet(1027)
-rel.getEndingNodeId
+rel:getEndingNodeId()
             </code></pre>
         </div>
     </article>
@@ -100,11 +100,11 @@ rel.getEndingNodeId
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the properties of the Relationship</p>
-            <pre><code class="language-lua">Relationship.getProperties</code></pre>
+            <pre><code class="language-lua">Table Relationship:getProperties()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 rel = RelationshipGet(1027)
-rel.getProperties
+rel:getProperties()
             </code></pre>
         </div>
     </article>
@@ -114,11 +114,11 @@ rel.getProperties
         </div>
         <div class="message-body is-dark">
             <p>Retrieve a property of the Relationship</p>
-            <pre><code class="language-lua">Relationship.getProperty</code></pre>
+            <pre><code class="language-lua">sol::object Relationship:getProperty(String)</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 rel = RelationshipGet(1027)
-rel.getProperty("name")
+rel:getProperty("name")
             </code></pre>
         </div>
     </article>

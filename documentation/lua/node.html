@@ -30,11 +30,11 @@ title: Lua API - Node
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the id of the Node</p>
-            <pre><code class="language-lua">Node.getId</code></pre>
+            <pre><code class="language-lua">Number Node:getId()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 node = NodeGet("Node", "Max")
-node.getId
+node:getId()
             </code></pre>
         </div>
     </article>
@@ -44,11 +44,11 @@ node.getId
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the type id of the Node</p>
-            <pre><code class="language-lua">Node.getTypeId</code></pre>
+            <pre><code class="language-lua">Number Node:getTypeId()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 node = NodeGet("Node", "Max")
-node.getTypeId
+node:getTypeId()
             </code></pre>
         </div>
     </article>
@@ -58,11 +58,11 @@ node.getTypeId
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the type of the Node</p>
-            <pre><code class="language-lua">Node.getType</code></pre>
+            <pre><code class="language-lua">String Node:getType()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 node = NodeGet("Node", "Max")
-node.getType
+node:getType()
             </code></pre>
         </div>
     </article>
@@ -72,11 +72,11 @@ node.getType
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the key of the Node</p>
-            <pre><code class="language-lua">Node.getKey</code></pre>
+            <pre><code class="language-lua">String Node:getKey()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 node = NodeGet("Node", "Max")
-node.getKey
+node:getKey()
             </code></pre>
         </div>
     </article>
@@ -86,11 +86,11 @@ node.getKey
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the properties of the Node</p>
-            <pre><code class="language-lua">Node.getProperties</code></pre>
+            <pre><code class="language-lua">Table Node:getProperties()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 node = NodeGet("Node", "Max")
-node.getProperties
+node:getProperties()
             </code></pre>
         </div>
     </article>
@@ -100,11 +100,11 @@ node.getProperties
         </div>
         <div class="message-body is-dark">
             <p>Retrieve a property of the Node</p>
-            <pre><code class="language-lua">Node.getProperty</code></pre>
+            <pre><code class="language-lua">sol::object Node:getProperty(String)</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 node = NodeGet("Node", "Max")
-node.getProperty("name")
+node:getProperty("name")
             </code></pre>
         </div>
     </article>

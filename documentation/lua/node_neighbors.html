@@ -20,37 +20,37 @@ title: Lua API - Node Neighbors
         </div>
         <div class="message-body is-dark">
             <p>Get the Neighbors for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighbors()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighbors(String type, String key)</code></pre>
             <p>Get the Neighbors of a Direction for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborssForDirection()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirection(String type, String key, Direction direction)</code></pre>
             <p>Get the Neighbors of a Direction and Type for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirectionForType(String type, String key, Direction direction, String rel_type)</code></pre>
             <p>Get the Neighbors of a Direction and Type Id for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
             <p>Get the Neighbors of a Direction and Types for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirectionForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Neighbors of a Type for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForType()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForType(String type, String key, String rel_type)</code></pre>
             <p>Get the Neighbors of a Type Id for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
             <p>Get the Neighbors of Types for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForTypes()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForTypes(String type, String key, String[] rel_types)</code></pre>
             <p>Get the Neighbors for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsById()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsById(Number id)</code></pre>
             <p>Get the Neighbors of a Direction for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirection()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirection(Number id, Direction direction)</code></pre>
             <p>Get the Neighbors of a Direction and Type for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirectionForType(Number id, Direction direction, String rel_type)</code></pre>
             <p>Get the Neighbors of a Direction and Type Id for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirectionForTypeId(Number id, Direction direction, Number type_id)</code></pre>
             <p>Get the Neighbors of a Direction and Types for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirectionForTypes(Number id, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Neighbors of a Type for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForType()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForType(Number id, String rel_type)</code></pre>
             <p>Get the Neighbors of a Type Id for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirectionForTypeId(Number id, Direction direction, Number type_id)</code></pre>
             <p>Get the Neighbors of Types for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForTypes()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForTypes(Number id, String[] rel_types)</code></pre>
         </div>
     </article>
 </section>

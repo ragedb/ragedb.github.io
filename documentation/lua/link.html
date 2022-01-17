@@ -26,18 +26,18 @@ title: Lua API - Link
     </article>
     <article class="message is-primary">
         <div class="message-header">
-            <p>node_id</p>
+            <p>getNodeId</p>
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the node id of the Link</p>
-            <pre><code class="language-lua">Link.node_id</code></pre>
+            <pre><code class="language-lua">Number Link:getNodeId()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 names = {}
 ids = NodeGetRelationshipsIds("Node", "Max")
 for k=1,#ids do
     v = ids[k]
-    table.insert(names, NodePropertyGetById(v.node_id, "name"))
+    table.insert(names, NodePropertyGetById(v:getNodeId(), "name"))
 end
 names
             </code></pre>
@@ -45,18 +45,18 @@ names
     </article>
     <article class="message is-primary">
         <div class="message-header">
-            <p>rel_id</p>
+            <p>getRelationshipId</p>
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the relationship id of the Link</p>
-            <pre><code class="language-lua">Link.rel_id</code></pre>
+            <pre><code class="language-lua">Number Link:getRelationshipId()</code></pre>
             <p>Example:</p>
             <pre><code class="language-lua">
 weights = {}
 ids = NodeGetRelationshipsIds("Node", "Max")
 for k=1,#ids do
     v = ids[k]
-    table.insert(names, RelationshipPropertyGetById(v.rel_id, "weight"))
+    table.insert(names, RelationshipPropertyGetById(v:getRelationshipId(), "weight"))
 end
 weights
             </code></pre>

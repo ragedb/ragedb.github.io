@@ -38,13 +38,13 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the count of Relationship Types</p>
-            <pre><code class="language-lua">number RelationshipTypesGetCount()</code></pre>
+            <pre><code class="language-lua">Number RelationshipTypesGetCount()</code></pre>
             <p>Retrieve the count of a Relationship Type</p>
-            <pre><code class="language-lua">number RelationshipTypesGetCountByType(string type)</code></pre>
+            <pre><code class="language-lua">Number RelationshipTypesGetCountByType(String type)</code></pre>
             <p>Retrieve the count of a Relationship Type by Type Id</p>
-            <pre><code class="language-lua">number RelationshipTypesGetCountById(number type_id)</code></pre>
+            <pre><code class="language-lua">Number RelationshipTypesGetCountById(Number type_id)</code></pre>
             <p>Retrieve the Relationship Types in an Array</p>
-            <pre><code class="language-lua">[string] RelationshipTypesGet()</code></pre>
+            <pre><code class="language-lua">String[] RelationshipTypesGet()</code></pre>
         </div>
     </article>
     <article class="message is-primary">
@@ -53,11 +53,11 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the Type of a Relationship Type Id</p>
-            <pre><code class="language-lua">string RelationshipTypeGetType(number type_id)</code></pre>
+            <pre><code class="language-lua">String RelationshipTypeGetType(Number type_id)</code></pre>
             <p>Retrieve the Type Id of a Relationship by Type</p>
-            <pre><code class="language-lua">number RelationshipTypeGetTypeId(string type)</code></pre>
+            <pre><code class="language-lua">Number RelationshipTypeGetTypeId(String type)</code></pre>
             <p>Insert a Relationship Type and return its Type Id</p>
-            <pre><code class="language-lua">number RelationshipTypeInsert(string type)</code></pre>
+            <pre><code class="language-lua">Number RelationshipTypeInsert(String type)</code></pre>
         </div>
     </article>
     <article class="message is-primary">
@@ -66,13 +66,13 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the count of Node Types</p>
-            <pre><code class="language-lua">number NodeTypesGetCount()</code></pre>
+            <pre><code class="language-lua">Number NodeTypesGetCount()</code></pre>
             <p>Retrieve the count of a Node Type</p>
-            <pre><code class="language-lua">number NodeTypesGetCountByType(string type)</code></pre>
+            <pre><code class="language-lua">Number NodeTypesGetCountByType(String type)</code></pre>
             <p>Retrieve the count of a Node Type by Type Id</p>
-            <pre><code class="language-lua">number NodeTypesGetCountById(number type_id)</code></pre>
+            <pre><code class="language-lua">Number NodeTypesGetCountById(Number type_id)</code></pre>
             <p>Retrieve the Node Types in an Array</p>
-            <pre><code class="language-lua">[string] NodeTypesGet()</code></pre>
+            <pre><code class="language-lua">String[] NodeTypesGet()</code></pre>
         </div>
     </article>
     <article class="message is-primary">
@@ -81,11 +81,11 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Retrieve the Type of a Node Type Id</p>
-            <pre><code class="language-lua">string NodeTypeGetType(number type_id)</code></pre>
+            <pre><code class="language-lua">String NodeTypeGetType(Number type_id)</code></pre>
             <p>Retrieve the Type Id of a Node by Type</p>
-            <pre><code class="language-lua">number NodeTypeGetTypeId(string type)</code></pre>
+            <pre><code class="language-lua">Number NodeTypeGetTypeId(String type)</code></pre>
             <p>Insert a Node Type and return its Type Id</p>
-            <pre><code class="language-lua">number NodeTypeInsert(string type)</code></pre>
+            <pre><code class="language-lua">Number NodeTypeInsert(String type)</code></pre>
         </div>
     </article>
     <article class="message is-warning">
@@ -105,77 +105,77 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Add a property to a Node Type</p>
-            <pre><code class="language-lua">number NodePropertyTypeAdd(string node_type, string property, string data_type)</code></pre>
+            <pre><code class="language-lua">Number NodePropertyTypeAdd(String node_type, String property, String data_type)</code></pre>
             <p>Add a property to a Relationship Type</p>
-            <pre><code class="language-lua">number RelationshipPropertyTypeAdd(string relationship_type, string property, string data_type)</code></pre>
+            <pre><code class="language-lua">Number RelationshipPropertyTypeAdd(String relationship_type, String property, String data_type)</code></pre>
             <p>Remove a property from a Node Type</p>
-            <pre><code class="language-lua">boolean NodePropertyTypeDelete(string node_type, string property)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertyTypeDelete(String node_type, String property)</code></pre>
             <p>Remove a property from a Relationship Type</p>
-            <pre><code class="language-lua">boolean RelationshipPropertyTypeDelete(string relationship_type, string property)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipPropertyTypeDelete(String relationship_type, String property)</code></pre>
         </div>
     </article>
-    <article class="message is-primary">
-        <div class="message-header">
-            <p>Nodes</p>
-        </div>
-        <div class="message-body is-dark">
-            <p>Add a Node with properties</p>
-            <pre><code class="language-lua">number NodeAdd(string type, string key, string json)</code></pre>
-            <p>Add an empty Node</p>
-            <pre><code class="language-lua">number NodeAddEmpty(string type, string key)</code></pre>
-            <p>Get a Node by Type and Key</p>
-            <pre><code class="language-lua">Node NodeGet(string type, string key)</code></pre>
-            <p>Get a Node by Id</p>
-            <pre><code class="language-lua">Node NodeGetById(number id)</code></pre>
-            <p>Get a Node Id by Type and Key</p>
-            <pre><code class="language-lua">number NodeGetId(string type, string key)</code></pre>
-            <p>Get the Key of a Node by Id</p>
-            <pre><code class="language-lua">string NodeGetKey(number id)</code></pre>
-            <p>Get the Type of a Node by Id</p>
-            <pre><code class="language-lua">string NodeGetType(number id)</code></pre>
-            <p>Get the Type Id of a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetTypeId(number id)</code></pre>
-            <p>Remove a Node by Type and Key</p>
-            <pre><code class="language-lua">boolean NodeRemove(string type, string key)</code></pre>
-            <p>Remove a Node by Id</p>
-            <pre><code class="language-lua">boolean NodeRemoveById(number id)</code></pre>
-            <p>Return a list of Nodes by their Node Ids</p>
-            <pre><code class="language-lua">[Node] NodesGet(number[] ids)</code></pre>
-        </div>
-    </article>
+	<article class="message is-primary">
+	    <div class="message-header">
+	        <p>Nodes</p>
+	    </div>
+	    <div class="message-body is-dark">
+	        <p>Add a Node with properties</p>
+	        <pre><code class="language-lua">Number NodeAdd(String type, String key, String json)</code></pre>
+	        <p>Add an empty Node</p>
+	        <pre><code class="language-lua">Number NodeAddEmpty(String type, String key)</code></pre>
+	        <p>Get a Node by Type and Key</p>
+	        <pre><code class="language-lua">Node NodeGet(String type, String key)</code></pre>
+	        <p>Get a Node by Id</p>
+	        <pre><code class="language-lua">Node NodeGetById(Number id)</code></pre>
+	        <p>Get a Node Id by Type and Key</p>
+	        <pre><code class="language-lua">Number NodeGetId(String type, String key)</code></pre>
+	        <p>Get the Key of a Node by Id</p>
+	        <pre><code class="language-lua">String NodeGetKey(Number id)</code></pre>
+	        <p>Get the Type of a Node by Id</p>
+	        <pre><code class="language-lua">String NodeGetType(Number id)</code></pre>
+	        <p>Get the Type Id of a Node by Id</p>
+	        <pre><code class="language-lua">Number NodeGetTypeId(Number id)</code></pre>
+	        <p>Remove a Node by Type and Key</p>
+	        <pre><code class="language-lua">Boolean NodeRemove(String type, String key)</code></pre>
+	        <p>Remove a Node by Id</p>
+	        <pre><code class="language-lua">Boolean NodeRemoveById(Number id)</code></pre>
+	        <p>Return a list of Nodes by their Node Ids</p>
+	        <pre><code class="language-lua">Node[] NodesGet(Number[] ids)</code></pre>
+	    </div>
+	</article>
     <article class="message is-primary">
         <div class="message-header">
             <p>Node Properties</p>
         </div>
         <div class="message-body is-dark">
             <p>Delete a Node Property</p>
-            <pre><code class="language-lua">boolean NodePropertyDelete(string type, string key, string property)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertyDelete(String type, String key, String property)</code></pre>
             <p>Delete a Node Property By Id</p>
-            <pre><code class="language-lua">boolean NodePropertyDeleteById(number id, string property)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertyDeleteById(Number id, String property)</code></pre>
             <p>Get a Node Property</p>
-            <pre><code class="language-lua">sol::object NodePropertyGet(string type, string key, string property)</code></pre>
+            <pre><code class="language-lua">sol::object NodePropertyGet(String type, String key, String property)</code></pre>
             <p>Get a Node Property By Id</p>
-            <pre><code class="language-lua">sol::object NodePropertyGetById(number id, string property)</code></pre>
+            <pre><code class="language-lua">sol::object NodePropertyGetById(Number id, String property)</code></pre>
             <p>Set a Node Property</p>
-            <pre><code class="language-lua">boolean NodePropertySet(string type, string key, string property, sol::object value)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertySet(String type, String key, String property, sol::object value)</code></pre>
             <p>Set a Node Property By Id</p>
-            <pre><code class="language-lua">boolean NodePropertySetById(number id, string property, sol::object value)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertySetById(Number id, String property, sol::object value)</code></pre>
             <p>Delete all Node Properties</p>
-            <pre><code class="language-lua">boolean NodePropertiesDelete(string type, string key)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertiesDelete(String type, String key)</code></pre>
             <p>Delete all Node Properties By Id</p>
-            <pre><code class="language-lua">boolean NodePropertiesDeleteById(number id)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertiesDeleteById(Number id)</code></pre>
             <p>Get a Node Properties</p>
-            <pre><code class="language-lua">sol::object NodePropertiesGet(string type, string key)</code></pre>
+            <pre><code class="language-lua">sol::object NodePropertiesGet(String type, String key)</code></pre>
             <p>Get a Node Properties By Id</p>
-            <pre><code class="language-lua">sol::object NodePropertiesGetById(number id)</code></pre>
+            <pre><code class="language-lua">sol::object NodePropertiesGetById(Number id)</code></pre>
             <p>Reset a Node Properties</p>
-            <pre><code class="language-lua">boolean NodePropertiesResetFromJson(string type, string key, string json)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertiesResetFromJson(String type, String key, String json)</code></pre>
             <p>Reset a Node Properties By Id</p>
-            <pre><code class="language-lua">boolean NodePropertiesResetFromJsonById(number id, string json)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertiesResetFromJsonById(Number id, String json)</code></pre>
             <p>Set some Node Properties</p>
-            <pre><code class="language-lua">boolean NodePropertiesSetFromJson(string type, string key, string json)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertiesSetFromJson(String type, String key, String json)</code></pre>
             <p>Set some Node Properties By Id</p>
-            <pre><code class="language-lua">boolean NodePropertiesSetFromJsonById(number id, string json)</code></pre>
+            <pre><code class="language-lua">Boolean NodePropertiesSetFromJsonById(Number id, String json)</code></pre>
         </div>
     </article>
     <article class="message is-primary">
@@ -184,83 +184,83 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Delete a Relationship Property</p>
-            <pre><code class="language-lua">boolean RelationshipPropertyDelete(number id, string property)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipPropertyDelete(Number id, String property)</code></pre>
             <p>Get a Relationship Property</p>
-            <pre><code class="language-lua">sol::object RelationshipPropertyGet(number id, string property)</code></pre>
+            <pre><code class="language-lua">sol::object RelationshipPropertyGet(Number id, String property)</code></pre>
             <p>Set a Relationship Property</p>
-            <pre><code class="language-lua">boolean RelationshipPropertySet(number id, string property, sol::object value)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipPropertySet(Number id, String property, sol::object value)</code></pre>
             <p>Delete all Relationship Properties</p>
-            <pre><code class="language-lua">boolean RelationshipPropertiesDelete(number id)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipPropertiesDelete(Number id)</code></pre>
             <p>Get a Relationship Properties</p>
-            <pre><code class="language-lua">sol::object RelationshipPropertiesGet(number id)</code></pre>
+            <pre><code class="language-lua">sol::object RelationshipPropertiesGet(Number id)</code></pre>
             <p>Reset a Relationship Properties</p>
-            <pre><code class="language-lua">boolean RelationshipPropertiesResetFromJson(number id, string json)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipPropertiesResetFromJson(Number id, String json)</code></pre>
             <p>Set some Relationship Properties</p>
-            <pre><code class="language-lua">boolean RelationshipPropertiesSetFromJson(number id, string json)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipPropertiesSetFromJson(Number id, String json)</code></pre>
         </div>
     </article>
-    <article class="message is-primary">
-        <div class="message-header">
-            <p>Relationships</p>
-        </div>
-        <div class="message-body is-dark">
-            <p>Add an empty Relationship</p>
-            <pre><code class="language-lua">number RelationshipAddEmpty(string rel_type, string type1, string key1, string type2, string key2)</code></pre>
-            <p>Add an empty Relationship by Type Id and Node Ids</p>
-            <pre><code class="language-lua">number RelationshipAddEmptyByTypeIdByIds(number rel_type_id, number id1, number id2)</code></pre>
-            <p>Add an empty Relationship by Node Ids</p>
-            <pre><code class="language-lua">number RelationshipAddEmptyByIds(string rel_type, number id1, number id1)</code></pre>
-            <p>Add a Relationship with properties</p>
-            <pre><code class="language-lua">number RelationshipAdd(string rel_type, string type1, string key1, string type2, string key2, string json)</code></pre>
-            <p>Add a Relationship with properties By Type Id and Node Ids</p>
-            <pre><code class="language-lua">number RelationshipAddByTypeIdByIds(number rel_type_id, number id1, number id1, string json)</code></pre>
-            <p>Add a Relationship with properties By Node Ids</p>
-            <pre><code class="language-lua">number RelationshipAddByIds(string rel_type, number id1, number id1, string json)</code></pre>
-            <p>Get a Relationship</p>
-            <pre><code class="language-lua">Relationship RelationshipGet(number id)</code></pre>
-            <p>Return a list of Relationships by their Relationship Ids</p>
-            <pre><code class="language-lua">[Relationship] RelationshipsGet([number ids])</code></pre>
-            <p>Remove a Relationship</p>
-            <pre><code class="language-lua">boolean RelationshipRemove(number id)</code></pre>
-            <p>Get the Type of a Relationship</p>
-            <pre><code class="language-lua">string RelationshipGetType(number id)</code></pre>
-            <p>Get the Type Id of a Relationship</p>
-            <pre><code class="language-lua">number RelationshipGetTypeId(number id)</code></pre>
-            <p>Get the Starting Node Id of a Relationship</p>
-            <pre><code class="language-lua">number RelationshipGetStartingNodeId(number id)</code></pre>
-            <p>Get the Ending Node Id of a Relationship</p>
-            <pre><code class="language-lua">number RelationshipGetEndingNodeId(number id)</code></pre>
-        </div>
-    </article>
+	<article class="message is-primary">
+	    <div class="message-header">
+	        <p>Relationships</p>
+	    </div>
+	    <div class="message-body is-dark">
+	        <p>Add an empty Relationship</p>
+	        <pre><code class="language-lua">Number RelationshipAddEmpty(String rel_type, String type1, String key1, String type2, String key2)</code></pre>
+	        <p>Add an empty Relationship by Type Id and Node Ids</p>
+	        <pre><code class="language-lua">Number RelationshipAddEmptyByTypeIdByIds(Number rel_type_id, Number id1, Number id2)</code></pre>
+	        <p>Add an empty Relationship by Node Ids</p>
+	        <pre><code class="language-lua">Number RelationshipAddEmptyByIds(String rel_type, Number id1, Number id1)</code></pre>
+	        <p>Add a Relationship with properties</p>
+	        <pre><code class="language-lua">Number RelationshipAdd(String rel_type, String type1, String key1, String type2, String key2, String json)</code></pre>
+	        <p>Add a Relationship with properties By Type Id and Node Ids</p>
+	        <pre><code class="language-lua">Number RelationshipAddByTypeIdByIds(Number rel_type_id, Number id1, Number id1, String json)</code></pre>
+	        <p>Add a Relationship with properties By Node Ids</p>
+	        <pre><code class="language-lua">Number RelationshipAddByIds(String rel_type, Number id1, Number id1, String json)</code></pre>
+	        <p>Get a Relationship</p>
+	        <pre><code class="language-lua">Relationship RelationshipGet(Number id)</code></pre>
+	        <p>Return a list of Relationships by their Relationship Ids</p>
+	        <pre><code class="language-lua">Relationship[] RelationshipsGet(Number[] ids)</code></pre>
+	        <p>Remove a Relationship</p>
+	        <pre><code class="language-lua">Boolean RelationshipRemove(Number id)</code></pre>
+	        <p>Get the Type of a Relationship</p>
+	        <pre><code class="language-lua">String RelationshipGetType(Number id)</code></pre>
+	        <p>Get the Type Id of a Relationship</p>
+	        <pre><code class="language-lua">Number RelationshipGetTypeId(Number id)</code></pre>
+	        <p>Get the Starting Node Id of a Relationship</p>
+	        <pre><code class="language-lua">Number RelationshipGetStartingNodeId(Number id)</code></pre>
+	        <p>Get the Ending Node Id of a Relationship</p>
+	        <pre><code class="language-lua">Number RelationshipGetEndingNodeId(Number id)</code></pre>
+	    </div>
+	</article>
     <article class="message is-primary">
         <div class="message-header">
             <p>Node Degree</p>
         </div>
         <div class="message-body is-dark">
             <p>Get the count of Relationships for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegree()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegree(String type, String key)</code></pre>
             <p>Get the count of Relationships of a Direction for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForDirection()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForDirection(String type, String key, Direction direction)</code></pre>
             <p>Get the count of Relationships of a Direction and Type for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForDirectionForType(String type, String key, Direction direction, String rel_type)</code></pre>
             <p>Get the count of Relationships of a Type for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForType()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForType(String type, String key, String rel_type)</code></pre>
             <p>Get the count of Relationships of a Direction and Types for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForDirectionForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the count of Relationships of Types for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForTypes()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForTypes(String type, String key, String[] rel_types)</code></pre>
             <p>Get the count of Relationships for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeById()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeById(Number id)</code></pre>
             <p>Get the count of Relationships of a Direction for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForDirection()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForDirection(Number id, Direction direction)</code></pre>
             <p>Get the count of Relationships of a Direction and Type for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForDirectionForType(Number id, Direction direction, String rel_type)</code></pre>
             <p>>Get the count of Relationships of a Type for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForType()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForType(Number id, String rel_type)</code></pre>
             <p>Get the count of Relationships of a Direction and Types for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForDirectionForTypes(Number id, Direction direction, String[] rel_types)</code></pre>
             <p>Get the count of Relationships of Types for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForTypes()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForTypes(Number id, String[] rel_types)</code></pre>
         </div>
     </article>
     <article class="message is-primary">
@@ -269,37 +269,37 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Get the Relationships Ids for a Node</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIds()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIds(String type, String key)</code></pre>
             <p>Get the Relationships Ids of a Direction for a Node</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsForDirection()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsForDirection(String type, String key, Direction direction)</code></pre>
             <p>Get the Relationships Ids of a Direction and Type for a Node</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsForDirectionForType(String type, String key, Direction direction, String rel_type)</code></pre>
             <p>Get the Relationships Ids of a Direction and Type Id for a Node</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
             <p>Get the Relationships Ids of a Direction and Types for a Node</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsForDirectionForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Relationships Ids of a Type for a Node</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsForType()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsForType(String type, String key, String rel_type)</code></pre>
             <p>Get the Relationships Ids of a Type Id for a Node</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsForTypeId(String type, String key, Number type_id)</code></pre>
             <p>Get the Relationships Ids of Types for a Node</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsForTypes()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Relationships Ids for a Node by Id</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsById()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsById(Number id)</code></pre>
             <p>Get the Relationships Ids of a Direction for a Node by Id</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsByIdForDirection()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsByIdForDirection(Number id, Direction direction)</code></pre>
             <p>Get the Relationships Ids of a Direction and Type for a Node by Id</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsByIdForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsByIdForDirectionForType(Number id, Direction direction, String rel_type)</code></pre>
             <p>Get the Relationships Ids of a Direction and Type Id for a Node by Id</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsByIdForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsByIdForDirectionForTypeId(Number id, Direction direction, Number type_id)</code></pre>
             <p>Get the Relationships Ids of a Direction and Types for a Node by Id</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsByIdForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsByIdForDirectionForTypes(Number id, String[] rel_types)</code></pre>
             <p>Get the Relationships Ids of a Type for a Node by Id</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsByIdForType()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsByIdForType(Number id, String rel_type)</code></pre>
             <p>Get the Relationships Ids of a Type Id for a Node by Id</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsByIdForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsByIdForDirectionForTypeId(Number id, Direction direction, Number rel_type_id)</code></pre>
             <p>Get the Relationships Ids of Types for a Node by Id</p>
-            <pre><code class="language-lua">[Link] NodeGetRelationshipsIdsByIdForTypes()</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetRelationshipsIdsByIdForTypes(Number id, String[] rel_types)</code></pre>
         </div>
     </article>
     <article class="message is-primary">
@@ -308,37 +308,37 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Get the Relationships for a Node</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationships()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(String type, String key)</code></pre>
             <p>Get the Relationships of a Direction for a Node</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsForDirection()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirection(String type, String key, Direction direction)</code></pre>
             <p>Get the Relationships of a Direction and Type for a Node</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirectionForType(String type, String key, Direction direction, String rel_type)</code></pre>
             <p>Get the Relationships of a Direction and Type Id for a Node</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
             <p>Get the Relationships of a Direction and Types for a Node</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirectionForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Relationships of a Type for a Node</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsForType()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForType(String type, String key, String rel_type)</code></pre>
             <p>Get the Relationships of a Type Id for a Node</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
             <p>Get the Relationships of Types for a Node</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsForTypes()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Relationships for a Node by Id</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsById()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsById(Number id)</code></pre>
             <p>Get the Relationships of a Direction for a Node by Id</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsByIdForDirection()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirection(Number id, Direction direction)</code></pre>
             <p>Get the Relationships of a Direction and Type for a Node by Id</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsByIdForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirectionForType(Number id, Direction direction, String rel_type)</code></pre>
             <p>Get the Relationships of a Direction and Type Id for a Node by Id</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsByIdForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirectionForTypeId(Number id, Direction direction, Number type_id)</code></pre>
             <p>Get the Relationships of a Direction and Types for a Node by Id</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsByIdForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirectionForTypes(Number id, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Relationships of a Type for a Node by Id</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsByIdForType()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForType(Number id, String rel_type)</code></pre>
             <p>Get the Relationships of a Type Id for a Node by Id</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsByIdForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirectionForTypeId(Number id, Direction direction)</code></pre>
             <p>Get the Relationships of Types for a Node by Id</p>
-            <pre><code class="language-lua">[Relationship] NodeGetRelationshipsByIdForTypes()</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForTypes(Number id, String[] rel_types)</code></pre>
         </div>
     </article>
     <article class="message is-primary">
@@ -347,37 +347,37 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Get the Neighbors for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighbors()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighbors(String type, String key)</code></pre>
             <p>Get the Neighbors of a Direction for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborssForDirection()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirection(String type, String key, Direction direction)</code></pre>
             <p>Get the Neighbors of a Direction and Type for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirectionForType(String type, String key, Direction direction, String rel_type)</code></pre>
             <p>Get the Neighbors of a Direction and Type Id for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
             <p>Get the Neighbors of a Direction and Types for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirectionForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Neighbors of a Type for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForType()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForType(String type, String key, String rel_type)</code></pre>
             <p>Get the Neighbors of a Type Id for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
             <p>Get the Neighbors of Types for a Node</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsForTypes()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsForTypes(String type, String key, String[] rel_types)</code></pre>
             <p>Get the Neighbors for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsById()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsById(Number id)</code></pre>
             <p>Get the Neighbors of a Direction for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirection()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirection(Number id, Direction direction)</code></pre>
             <p>Get the Neighbors of a Direction and Type for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirectionForType(Number id, Direction direction, String rel_type)</code></pre>
             <p>Get the Neighbors of a Direction and Type Id for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirectionForTypeId(Number id, Direction direction, Number type_id)</code></pre>
             <p>Get the Neighbors of a Direction and Types for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirectionForTypes(Number id, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Neighbors of a Type for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForType()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForType(Number id, String rel_type)</code></pre>
             <p>Get the Neighbors of a Type Id for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForDirectionForTypeId()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForDirectionForTypeId(Number id, Direction direction, Number type_id)</code></pre>
             <p>Get the Neighbors of Types for a Node by Id</p>
-            <pre><code class="language-lua">[Node] NodeGetNeighborsByIdForTypes()</code></pre>
+            <pre><code class="language-lua">Node[] NodeGetNeighborsByIdForTypes(Number id, String[] rel_types)</code></pre>
         </div>
     </article>
     <article class="message is-primary">
@@ -386,21 +386,21 @@ title: Lua API - Overview
         </div>
         <div class="message-body is-dark">
             <p>Get all the Node Ids</p>
-            <pre><code class="language-lua">[number] AllNodeIds()</code></pre>
+            <pre><code class="language-lua">Number[] AllNodeIds()</code></pre>
             <p>Get all the Nodes Ids of a Type</p>
-            <pre><code class="language-lua">[number] AllNodeIdsForType()</code></pre>
+            <pre><code class="language-lua">Number[] AllNodeIdsForType(String type)</code></pre>
             <p>Get all the Relationship Ids</p>
-            <pre><code class="language-lua">[number] AllRelationshipIds()</code></pre>
+            <pre><code class="language-lua">Number[] AllRelationshipIds()</code></pre>
             <p>Get all the Relationship Ids of a Type</p>
-            <pre><code class="language-lua">[number] AllRelationshipIdsForType()</code></pre>
+            <pre><code class="language-lua">Number[] AllRelationshipIdsForType(String type)</code></pre>
             <p>Get all the Nodes</p>
-            <pre><code class="language-lua">[Node] AllNodes()</code></pre>
+            <pre><code class="language-lua">Node[] AllNodes()</code></pre>
             <p>Get all the Nodes of a Type</p>
-            <pre><code class="language-lua">[Node] AllNodesForType()</code></pre>
+            <pre><code class="language-lua">Node[] AllNodesForType(String type)</code></pre>
             <p>Get all the Relationships</p>
-            <pre><code class="language-lua">[Relationship] AllRelationships()</code></pre>
+            <pre><code class="language-lua">Relationship[] AllRelationships()</code></pre>
             <p>Get all the Relationships of a Type</p>
-            <pre><code class="language-lua">[Relationship] AllRelationshipsForType()</code></pre>
+            <pre><code class="language-lua">Relationship[] AllRelationshipsForType(String type)</code></pre>
         </div>
     </article>
 </section>

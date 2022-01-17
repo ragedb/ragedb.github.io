@@ -20,29 +20,29 @@ title: Lua API - Node Degrees
         </div>
         <div class="message-body is-dark">
             <p>Get the count of Relationships for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegree()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegree(String type, String key)</code></pre>
             <p>Get the count of Relationships of a Direction for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForDirection()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForDirection(String type, String key, Direction direction)</code></pre>
             <p>Get the count of Relationships of a Direction and Type for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForDirectionForType(String type, String key, Direction direction, String rel_type)</code></pre>
             <p>Get the count of Relationships of a Type for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForType()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForType(String type, String key, String rel_type)</code></pre>
             <p>Get the count of Relationships of a Direction and Types for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForDirectionForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the count of Relationships of Types for a Node</p>
-            <pre><code class="language-lua">number NodeGetDegreeForTypes()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeForTypes(String type, String key, String[] rel_types)</code></pre>
             <p>Get the count of Relationships for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeById()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeById(Number id)</code></pre>
             <p>Get the count of Relationships of a Direction for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForDirection()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForDirection(Number id, Direction direction)</code></pre>
             <p>Get the count of Relationships of a Direction and Type for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForDirectionForType()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForDirectionForType(Number id, Direction direction, String rel_type)</code></pre>
             <p>>Get the count of Relationships of a Type for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForType()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForType(Number id, String rel_type)</code></pre>
             <p>Get the count of Relationships of a Direction and Types for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForDirectionForTypes()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForDirectionForTypes(Number id, Direction direction, String[] rel_types)</code></pre>
             <p>Get the count of Relationships of Types for a Node by Id</p>
-            <pre><code class="language-lua">number NodeGetDegreeByIdForTypes()</code></pre>
+            <pre><code class="language-lua">Number NodeGetDegreeByIdForTypes(Number id, String[] rel_types)</code></pre>
         </div>
     </article>
 </section>
