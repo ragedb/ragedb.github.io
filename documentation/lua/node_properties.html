@@ -20,33 +20,33 @@ title: Lua API - Node Properties
         </div>
         <div class="message-body is-dark">
             <p>Delete a Node Property</p>
-            <pre><code class="language-lua">Boolean NodePropertyDelete(String type, String key, String property)</code></pre>
+            <pre><code class="language-lua">Boolean NodeDeleteProperty(String type, String key, String property)</code></pre>
             <p>Delete a Node Property By Id</p>
-            <pre><code class="language-lua">Boolean NodePropertyDeleteById(Number id, String property)</code></pre>
+            <pre><code class="language-lua">Boolean NodeDeletePropertyById(Number id, String property)</code></pre>
             <p>Get a Node Property</p>
-            <pre><code class="language-lua">sol::object NodePropertyGet(String type, String key, String property)</code></pre>
+            <pre><code class="language-lua">sol::object NodeGetProperty(String type, String key, String property)</code></pre>
             <p>Get a Node Property By Id</p>
-            <pre><code class="language-lua">sol::object NodePropertyGetById(Number id, String property)</code></pre>
+            <pre><code class="language-lua">sol::object NodeGetPropertyById(Number id, String property)</code></pre>
             <p>Set a Node Property</p>
-            <pre><code class="language-lua">Boolean NodePropertySet(String type, String key, String property, sol::object value)</code></pre>
+            <pre><code class="language-lua">Boolean NodeSetProperty(String type, String key, String property, sol::object value)</code></pre>
             <p>Set a Node Property By Id</p>
-            <pre><code class="language-lua">Boolean NodePropertySetById(Number id, String property, sol::object value)</code></pre>
+            <pre><code class="language-lua">Boolean NodeSetPropertyById(Number id, String property, sol::object value)</code></pre>
             <p>Delete all Node Properties</p>
-            <pre><code class="language-lua">Boolean NodePropertiesDelete(String type, String key)</code></pre>
+            <pre><code class="language-lua">Boolean NodeDeleteProperties(String type, String key)</code></pre>
             <p>Delete all Node Properties By Id</p>
-            <pre><code class="language-lua">Boolean NodePropertiesDeleteById(Number id)</code></pre>
+            <pre><code class="language-lua">Boolean NodeDeletePropertiesById(Number id)</code></pre>
             <p>Get a Node Properties</p>
-            <pre><code class="language-lua">sol::object NodePropertiesGet(String type, String key)</code></pre>
+            <pre><code class="language-lua">sol::object NodeGetProperties(String type, String key)</code></pre>
             <p>Get a Node Properties By Id</p>
-            <pre><code class="language-lua">sol::object NodePropertiesGetById(Number id)</code></pre>
+            <pre><code class="language-lua">sol::object NodeGetPropertiesById(Number id)</code></pre>
             <p>Reset a Node Properties</p>
-            <pre><code class="language-lua">Boolean NodePropertiesResetFromJson(String type, String key, String json)</code></pre>
+            <pre><code class="language-lua">Boolean NodeResetPropertiesFromJson(String type, String key, String json)</code></pre>
             <p>Reset a Node Properties By Id</p>
-            <pre><code class="language-lua">Boolean NodePropertiesResetFromJsonById(Number id, String json)</code></pre>
+            <pre><code class="language-lua">Boolean NodeResetPropertiesFromJsonById(Number id, String json)</code></pre>
             <p>Set some Node Properties</p>
-            <pre><code class="language-lua">Boolean NodePropertiesSetFromJson(String type, String key, String json)</code></pre>
+            <pre><code class="language-lua">Boolean NodeSetPropertiesFromJson(String type, String key, String json)</code></pre>
             <p>Set some Node Properties By Id</p>
-            <pre><code class="language-lua">Boolean NodePropertiesSetFromJsonById(Number id, String json)</code></pre>
+            <pre><code class="language-lua">Boolean NodeSetPropertiesFromJsonById(Number id, String json)</code></pre>
         </div>
     </article>
 </section>

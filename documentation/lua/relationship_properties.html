@@ -20,19 +20,19 @@ title: Lua API - Relationship Properties
         </div>
         <div class="message-body is-dark">
             <p>Delete a Relationship Property</p>
-            <pre><code class="language-lua">Boolean RelationshipPropertyDelete(Number id, String property)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipDeleteProperty(Number id, String property)</code></pre>
             <p>Get a Relationship Property</p>
-            <pre><code class="language-lua">sol::object RelationshipPropertyGet(Number id, String property)</code></pre>
+            <pre><code class="language-lua">sol::object RelationshipGetProperty(Number id, String property)</code></pre>
             <p>Set a Relationship Property</p>
-            <pre><code class="language-lua">Boolean RelationshipPropertySet(Number id, String property, sol::object value)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipSetProperty(Number id, String property, sol::object value)</code></pre>
             <p>Delete all Relationship Properties</p>
-            <pre><code class="language-lua">Boolean RelationshipPropertiesDelete(Number id)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipDeleteProperties(Number id)</code></pre>
             <p>Get a Relationship Properties</p>
-            <pre><code class="language-lua">sol::object RelationshipPropertiesGet(Number id)</code></pre>
+            <pre><code class="language-lua">sol::object RelationshipGetProperties(Number id)</code></pre>
             <p>Reset a Relationship Properties</p>
-            <pre><code class="language-lua">Boolean RelationshipPropertiesResetFromJson(Number id, String json)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipResetPropertiesFromJson(Number id, String json)</code></pre>
             <p>Set some Relationship Properties</p>
-            <pre><code class="language-lua">Boolean RelationshipPropertiesSetFromJson(Number id, String json)</code></pre>
+            <pre><code class="language-lua">Boolean RelationshipSetPropertiesFromJson(Number id, String json)</code></pre>
         </div>
     </article>
 </section>
