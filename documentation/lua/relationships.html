@@ -20,17 +20,13 @@ title: Lua API - Relationships
 	    </div>
 	    <div class="message-body is-dark">
 	        <p>Add an empty Relationship</p>
-	        <pre><code class="language-lua">Number RelationshipAddEmpty(String rel_type, String type1, String key1, String type2, String key2)</code></pre>
-	        <p>Add an empty Relationship by Type Id and Node Ids</p>
-	        <pre><code class="language-lua">Number RelationshipAddEmptyByTypeIdByIds(Number rel_type_id, Number id1, Number id2)</code></pre>
+	        <pre><code class="language-lua">Number RelationshipAdd(String rel_type, String type1, String key1, String type2, String key2)</code></pre>
 	        <p>Add an empty Relationship by Node Ids</p>
-	        <pre><code class="language-lua">Number RelationshipAddEmptyByIds(String rel_type, Number id1, Number id1)</code></pre>
+	        <pre><code class="language-lua">Number Relationship(String rel_type, Number id1, Number id1)</code></pre>
 	        <p>Add a Relationship with properties</p>
 	        <pre><code class="language-lua">Number RelationshipAdd(String rel_type, String type1, String key1, String type2, String key2, String json)</code></pre>
-	        <p>Add a Relationship with properties By Type Id and Node Ids</p>
-	        <pre><code class="language-lua">Number RelationshipAddByTypeIdByIds(Number rel_type_id, Number id1, Number id1, String json)</code></pre>
 	        <p>Add a Relationship with properties By Node Ids</p>
-	        <pre><code class="language-lua">Number RelationshipAddByIds(String rel_type, Number id1, Number id1, String json)</code></pre>
+	        <pre><code class="language-lua">Number RelationshipAdd(String rel_type, Number id1, Number id1, String json)</code></pre>
 	        <p>Get a Relationship</p>
 	        <pre><code class="language-lua">Relationship RelationshipGet(Number id)</code></pre>
 	        <p>Return a list of Relationships by their Relationship Ids</p>
@@ -39,8 +35,6 @@ title: Lua API - Relationships
 	        <pre><code class="language-lua">Boolean RelationshipRemove(Number id)</code></pre>
 	        <p>Get the Type of a Relationship</p>
 	        <pre><code class="language-lua">String RelationshipGetType(Number id)</code></pre>
-	        <p>Get the Type Id of a Relationship</p>
-	        <pre><code class="language-lua">Number RelationshipGetTypeId(Number id)</code></pre>
 	        <p>Get the Starting Node Id of a Relationship</p>
 	        <pre><code class="language-lua">Number RelationshipGetStartingNodeId(Number id)</code></pre>
 	        <p>Get the Ending Node Id of a Relationship</p>

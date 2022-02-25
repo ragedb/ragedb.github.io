@@ -22,11 +22,11 @@ title: Lua API - Nodes
 	        <p>Add a Node with properties</p>
 	        <pre><code class="language-lua">Number NodeAdd(String type, String key, String json)</code></pre>
 	        <p>Add an empty Node</p>
-	        <pre><code class="language-lua">Number NodeAddEmpty(String type, String key)</code></pre>
+	        <pre><code class="language-lua">Number NodeAdd(String type, String key)</code></pre>
 	        <p>Get a Node by Type and Key</p>
 	        <pre><code class="language-lua">Node NodeGet(String type, String key)</code></pre>
 	        <p>Get a Node by Id</p>
-	        <pre><code class="language-lua">Node NodeGetById(Number id)</code></pre>
+	        <pre><code class="language-lua">Node NodeGet(Number id)</code></pre>
 	        <p>Get a Node Id by Type and Key</p>
 	        <pre><code class="language-lua">Number NodeGetId(String type, String key)</code></pre>
 	        <p>Get the Key of a Node by Id</p>
@@ -38,7 +38,7 @@ title: Lua API - Nodes
 	        <p>Remove a Node by Type and Key</p>
 	        <pre><code class="language-lua">Boolean NodeRemove(String type, String key)</code></pre>
 	        <p>Remove a Node by Id</p>
-	        <pre><code class="language-lua">Boolean NodeRemoveById(Number id)</code></pre>
+	        <pre><code class="language-lua">Boolean NodeRemove(Number id)</code></pre>
 	        <p>Return a list of Nodes by their Node Ids</p>
 	        <pre><code class="language-lua">Node[] NodesGet(Number[] ids)</code></pre>
 	    </div>

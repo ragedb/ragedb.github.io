@@ -22,35 +22,27 @@ title: Lua API - Traversing Relationships
             <p>Get the Relationships for a Node</p>
             <pre><code class="language-lua">Relationship[] NodeGetRelationships(String type, String key)</code></pre>
             <p>Get the Relationships of a Direction for a Node</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirection(String type, String key, Direction direction)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(String type, String key, Direction direction)</code></pre>
             <p>Get the Relationships of a Direction and Type for a Node</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirectionForType(String type, String key, Direction direction, String rel_type)</code></pre>
-            <p>Get the Relationships of a Direction and Type Id for a Node</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(String type, String key, Direction direction, String rel_type)</code></pre>
             <p>Get the Relationships of a Direction and Types for a Node</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirectionForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Relationships of a Type for a Node</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForType(String type, String key, String rel_type)</code></pre>
-            <p>Get the Relationships of a Type Id for a Node</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(String type, String key, String rel_type)</code></pre>
             <p>Get the Relationships of Types for a Node</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Relationships for a Node by Id</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsById(Number id)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(Number id)</code></pre>
             <p>Get the Relationships of a Direction for a Node by Id</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirection(Number id, Direction direction)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(Number id, Direction direction)</code></pre>
             <p>Get the Relationships of a Direction and Type for a Node by Id</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirectionForType(Number id, Direction direction, String rel_type)</code></pre>
-            <p>Get the Relationships of a Direction and Type Id for a Node by Id</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirectionForTypeId(Number id, Direction direction, Number type_id)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(Number id, Direction direction, String rel_type)</code></pre>
             <p>Get the Relationships of a Direction and Types for a Node by Id</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirectionForTypes(Number id, Direction direction, String[] rel_types)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(Number id, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Relationships of a Type for a Node by Id</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForType(Number id, String rel_type)</code></pre>
-            <p>Get the Relationships of a Type Id for a Node by Id</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForDirectionForTypeId(Number id, Direction direction)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(Number id, String rel_type)</code></pre>
             <p>Get the Relationships of Types for a Node by Id</p>
-            <pre><code class="language-lua">Relationship[] NodeGetRelationshipsByIdForTypes(Number id, String[] rel_types)</code></pre>
+            <pre><code class="language-lua">Relationship[] NodeGetRelationships(Number id, String[] rel_types)</code></pre>
         </div>
     </article>
 </section>

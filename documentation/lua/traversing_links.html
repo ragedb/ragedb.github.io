@@ -22,35 +22,27 @@ title: Lua API - Traversing Node Links
             <p>Get the Links for a Node</p>
             <pre><code class="language-lua">Link[] NodeGetLinks(String type, String key)</code></pre>
             <p>Get the Links of a Direction for a Node</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksForDirection(String type, String key, Direction direction)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(String type, String key, Direction direction)</code></pre>
             <p>Get the Links of a Direction and Type for a Node</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksForDirectionForType(String type, String key, Direction direction, String rel_type)</code></pre>
-            <p>Get the Links of a Direction and Type Id for a Node</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksForDirectionForTypeId(String type, String key, Direction direction, Number type_id)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(String type, String key, Direction direction, String rel_type)</code></pre>
             <p>Get the Links of a Direction and Types for a Node</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksForDirectionForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Links of a Type for a Node</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksForType(String type, String key, String rel_type)</code></pre>
-            <p>Get the Links of a Type Id for a Node</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksForTypeId(String type, String key, Number type_id)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(String type, String key, String rel_type)</code></pre>
             <p>Get the Links of Types for a Node</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksForTypes(String type, String key, Direction direction, String[] rel_types)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(String type, String key, Direction direction, String[] rel_types)</code></pre>
             <p>Get the Links for a Node by Id</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksById(Number id)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Number id)</code></pre>
             <p>Get the Links of a Direction for a Node by Id</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksByIdForDirection(Number id, Direction direction)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Number id, Direction direction)</code></pre>
             <p>Get the Links of a Direction and Type for a Node by Id</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksByIdForDirectionForType(Number id, Direction direction, String rel_type)</code></pre>
-            <p>Get the Links of a Direction and Type Id for a Node by Id</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksByIdForDirectionForTypeId(Number id, Direction direction, Number type_id)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Number id, Direction direction, String rel_type)</code></pre>
             <p>Get the Links of a Direction and Types for a Node by Id</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksByIdForDirectionForTypes(Number id, String[] rel_types)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Number id, String[] rel_types)</code></pre>
             <p>Get the Links of a Type for a Node by Id</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksByIdForType(Number id, String rel_type)</code></pre>
-            <p>Get the Links of a Type Id for a Node by Id</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksByIdForDirectionForTypeId(Number id, Direction direction, Number rel_type_id)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Number id, String rel_type)</code></pre>
             <p>Get the Links of Types for a Node by Id</p>
-            <pre><code class="language-lua">Link[] NodeGetLinksByIdForTypes(Number id, String[] rel_types)</code></pre>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Number id, String[] rel_types)</code></pre>
         </div>
     </article>
 </section>
