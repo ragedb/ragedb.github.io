@@ -24,11 +24,16 @@ title: RageDB
                     </p><br>
                     <p>
                     <a class="button is-white is-large is-fullwidth is-outlined is-rounded is-focused" href="https://hub.docker.com/r/ragedb/ragedb" target="_blank">
-              <span class="icon">
-                <i class="fab fa-docker"></i>
-              </span><span>Try it right now using Docker!</span>
+              		  <span class="icon">
+                		  <i class="fab fa-docker"></i>
+              		</span><span>Try it right now using Docker!</span>
                     </a>
                     </p>
+					<br/>
+					<div class="box has-text-white has-background-dark is-family-monospace flex-shrink">
+					  docker run -p 7243:7243 -t dockerhub.ragedb.com/ragedb/ragedb:latest --cap-add=sys_nice
+					</div>
+					
                 </div>
 
                 <div class="column">
