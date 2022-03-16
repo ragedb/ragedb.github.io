@@ -30,10 +30,9 @@ title: RageDB
                     </a>
                     </p>
 					<br/>
-					<div class="box has-text-white has-background-dark is-family-monospace flex-shrink">
-					  docker run -p 7243:7243 -t dockerhub.ragedb.com/ragedb/ragedb:latest --cap-add=sys_nice
-					</div>
-					
+					<div>
+						<pre id="nopad" class="snippet"><code class="language-bash">docker run -p 7243:7243 -t dockerhub.ragedb.com/ragedb/ragedb:latest --cap-add=sys_nice</code></pre>
+					</div>		
                 </div>
 
                 <div class="column">
@@ -51,3 +50,4 @@ title: RageDB
         </div>
     </div>
 </section>
+<script>var snippets=document.querySelectorAll('.snippet');[].forEach.call(snippets,function(snippet){snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn" data-clipboard-snippet><img class="clippy" width="13" src="/images/clippy.svg" alt="Copy to clipboard"></button>');});var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{target:function(trigger){return trigger.nextElementSibling;}});clipboardSnippets.on('success',function(e){e.clearSelection();showTooltip(e.trigger,'Copied!');});clipboardSnippets.on('error',function(e){showTooltip(e.trigger,fallbackMessage(e.action));});</script>
