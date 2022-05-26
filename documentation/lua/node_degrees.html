@@ -20,6 +20,18 @@ title: Lua API - Node Degrees
         </div>
         <div class="message-body is-dark">
             <p>Get the count of Relationships for a Node</p>
+            <pre><code class="language-lua">Number NodeGetDegree(Node node)</code></pre>
+            <p>Get the count of Relationships of a Direction for a Node</p>
+            <pre><code class="language-lua">Number NodeGetDegree(Node node, Direction direction)</code></pre>
+            <p>Get the count of Relationships of a Direction and Type for a Node</p>
+            <pre><code class="language-lua">Number NodeGetDegree(Node node, Direction direction, String rel_type)</code></pre>
+            <p>Get the count of Relationships of a Type for a Node</p>
+            <pre><code class="language-lua">Number NodeGetDegree(Node node, String rel_type)</code></pre>
+            <p>Get the count of Relationships of a Direction and Types for a Node</p>
+            <pre><code class="language-lua">Number NodeGetDegree(Node node, Direction direction, String[] rel_types)</code></pre>
+            <p>Get the count of Relationships of Types for a Node</p>
+            <pre><code class="language-lua">Number NodeGetDegree(Node node, String[] rel_types)</code></pre>
+            <p>Get the count of Relationships for a Node</p>
             <pre><code class="language-lua">Number NodeGetDegree(String type, String key)</code></pre>
             <p>Get the count of Relationships of a Direction for a Node</p>
             <pre><code class="language-lua">Number NodeGetDegree(String type, String key, Direction direction)</code></pre>
