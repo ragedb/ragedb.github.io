@@ -20,6 +20,18 @@ title: Lua API - Traversing Node Links
         </div>
         <div class="message-body is-dark">
             <p>Get the Links for a Node</p>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Node node)</code></pre>
+            <p>Get the Links of a Direction for a Node</p>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Node node, Direction direction)</code></pre>
+            <p>Get the Links of a Direction and Type for a Node</p>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Node node, Direction direction, String rel_type)</code></pre>
+            <p>Get the Links of a Direction and Types for a Node</p>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Node nodey, Direction direction, String[] rel_types)</code></pre>
+            <p>Get the Links of a Type for a Node</p>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Node node, String rel_type)</code></pre>
+            <p>Get the Links of Types for a Node</p>
+            <pre><code class="language-lua">Link[] NodeGetLinks(Node node, Direction direction, String[] rel_types)</code></pre>
+			<p>Get the Links for a Node</p>
             <pre><code class="language-lua">Link[] NodeGetLinks(String type, String key)</code></pre>
             <p>Get the Links of a Direction for a Node</p>
             <pre><code class="language-lua">Link[] NodeGetLinks(String type, String key, Direction direction)</code></pre>

@@ -1,0 +1,60 @@
+---
+layout: default
+title: Lua API - List Methods
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            Lua API
+        </p>
+        <p class="subtitle">
+            List Methods
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Intersect - In both lists</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the intersecting ids from two lists of ids</p>
+            <pre><code class="language-lua">Number[] IntersectIds(Number[] ids1, Number[] ids2)</code></pre>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the intersecting Nodes from two lists of ids</p>
+            <pre><code class="language-lua">Node[] IntersectNodes(Number[] ids1, Number[] ids2)</code></pre>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the intersecting Relationships from two lists of ids</p>
+            <pre><code class="language-lua">Relationship[] IntersectRelationships(Number[] ids1, Number[] ids2)</code></pre>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the intersecting ids count from two lists of ids</p>
+            <pre><code class="language-lua">Number[] IntersectIdsCount(Number[] ids1, Number[] ids2)</code></pre>
+        </div>
+    </article>
+	
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Difference - present in the first list, but not in the second one</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the difference ids from two lists of ids</p>
+            <pre><code class="language-lua">Number[] DifferenceIds(Number[] ids1, Number[] ids2)</code></pre>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the difference Nodes from two lists of ids</p>
+            <pre><code class="language-lua">Node[] DifferenceNodes(Number[] ids1, Number[] ids2)</code></pre>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the difference Relationships from two lists of ids</p>
+            <pre><code class="language-lua">Relationship[] DifferenceRelationships(Number[] ids1, Number[] ids2)</code></pre>
+        </div>
+        <div class="message-body is-dark">
+            <p>Get the difference ids count from two lists of ids</p>
+            <pre><code class="language-lua">Number[] DifferenceIdsCount(Number[] ids1, Number[] ids2)</code></pre>
+        </div>
+    </article>
+</section>
