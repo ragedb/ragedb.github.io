@@ -1,0 +1,134 @@
+---
+layout: default
+title: GQL API - Quantified Paths
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            Quantified Paths
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Overview</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    A <strong>quantified path</strong> is a variable-length path pattern where an edge pattern or a group of path patterns is repeated. This is extremely useful when the exact hop count between nodes is unknown, or when traversing hierarchies or networks of varying depths (such as mana path networks).
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Quantifiers</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    A quantifier is written as a postfix to an edge pattern or a parenthesized path pattern:
+                </p>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Quantifier</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>{m, n}</code></td>
+                            <td>Between <code>m</code> and <code>n</code> repetitions (inclusive).</td>
+                        </tr>
+                        <tr>
+                            <td><code>{m}</code></td>
+                            <td>Exactly <code>m</code> repetitions.</td>
+                        </tr>
+                        <tr>
+                            <td><code>{m,}</code></td>
+                            <td>At least <code>m</code> repetitions.</td>
+                        </tr>
+                        <tr>
+                            <td><code>{,n}</code></td>
+                            <td>Between 0 and <code>n</code> repetitions (inclusive).</td>
+                        </tr>
+                        <tr>
+                            <td><code>*</code></td>
+                            <td>Equivalent to <code>{0,}</code>. Zero or more repetitions.</td>
+                        </tr>
+                        <tr>
+                            <td><code>+</code></td>
+                            <td>Equivalent to <code>{1,}</code>. One or more repetitions.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Building Quantified Paths</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <h4>1. Quantified Edges</h4>
+                <p>An edge pattern followed directly by a quantifier. Works on both full and abbreviated edge patterns.</p>
+                <p>Find wizards reachable within 1 to 3 hops of AlliedWith edges from "Albus":</p>
+                <pre><code class="language-sql">MATCH p = (:Wizard {name: "Albus"})-[:AlliedWith]-&gt;{1,3}(w:Wizard)
+RETURN p</code></pre>
+
+                <h4>2. Quantified Path Groups</h4>
+                <p>Enclose a sequence of node and edge patterns in parentheses <code>()</code> and append the quantifier. This repeats the entire group structure.</p>
+                <p>Find paths repeating the <code>(Wizard)-[:Teaches]-&gt;(Spell)</code> pattern exactly 2 times:</p>
+                <pre><code class="language-sql">MATCH p = ((:Wizard)-[:Teaches]-&gt;(:Spell)){2}
+RETURN p</code></pre>
+                
+                <h4>3. Zero-Hop repetition semantics</h4>
+                <p>
+                    When a quantifier allows 0 repetitions (e.g. <code>{0,3}</code> or <code>*</code>), a 0-hop match is returned. This represents the starting node itself (a path of length 0 with zero edges).
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Group Variables and Referencing Semantics</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    Variables declared inside the repeated segment of a quantified path are bound to a <strong>list of elements</strong> (nodes or edges) encountered across the hops. These are called <strong>group variables</strong>.
+                </p>
+                
+                <h4>Referencing Outside the Quantified Segment</h4>
+                <p>
+                    Outside the parenthesized repeatable group, the variable is exposed as a list. Evaluating property lookups directly on them (e.g., <code>w.level</code>) will fail because list types do not have these properties.
+                </p>
+                <pre><code class="language-sql">-- SYNTAX ERROR (w and s are lists of elements!)
+MATCH p = ((w:Wizard)-[e:Teaches]-&gt;(s:Spell)){1,2}
+WHERE w.level &gt; 50
+RETURN p
+
+-- CORRECT (Filtering using list functions or subqueries)
+MATCH p = ((w:Wizard)-[e:Teaches]-&gt;(s:Spell)){1,2}
+RETURN p, w, s</code></pre>
+
+                <h4>Referencing Inside the Quantified Segment</h4>
+                <p>
+                    Inside the repeatable group, variables are treated as <strong>singletons</strong> representing the individual nodes or edges at each specific hop. You can filter them inline.
+                </p>
+                <p>Find paths of 1 to 2 wizard-spell teachings where each teaching wizard has a magic level greater than 40:</p>
+                <pre><code class="language-sql">MATCH p = ((w:Wizard WHERE w.level &gt; 40)-[:Teaches]-&gt;(s:Spell)){1,2}
+RETURN p</code></pre>
+            </div>
+        </div>
+    </article>
+</section>

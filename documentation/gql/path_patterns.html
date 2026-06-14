@@ -1,0 +1,185 @@
+---
+layout: default
+title: GQL API - Path Patterns
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            Path Patterns
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Overview</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    A <strong>path pattern</strong> matches sequences of alternating nodes and edges in the graph. It consists of three parts:
+                </p>
+                <ol>
+                    <li>Path variable declaration (optional)</li>
+                    <li>Path pattern prefix (optional)</li>
+                    <li>Path pattern expression</li>
+                </ol>
+                <pre><code class="language-sql">-- Syntax
+[ path_variable = ] [ path_prefix ] path_expression</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Basic Paths</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    A path expression chains node and edge patterns sequentially. A valid path pattern must alternate between nodes and edges, starting and ending with a node pattern.
+                </p>
+                
+                <h5>Chaining Elements:</h5>
+                <p>Match paths starting from a wizard named "Harry", leading to a spell via <code>Teaches</code>:</p>
+                <pre><code class="language-sql">(:Wizard {name: "Harry"})-[:Teaches]-&gt;(:Spell)</code></pre>
+                
+                <p>Find wizards who share a mutual knows-connection with "Harry" and "Hermione", binding the mutual friend to <code>friend</code>:</p>
+                <pre><code class="language-sql">(:Wizard {name: "Harry"})-[:Knows]-&gt;(friend:Wizard)&lt;-[knows]-(:Wizard {name: "Hermione"})</code></pre>
+                
+                <h5>Ring and Cycle Structures:</h5>
+                <p>You can reuse a node variable at different points in a path pattern to enforce cycle constraints. This query finds a closed alliance loop starting and ending at the same wizard <code>w</code>:</p>
+                <pre><code class="language-sql">(w:Wizard)-[:AlliedWith]-&gt;(:Wizard)-[:AlliedWith]-&gt;(w)</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Path Variable Declaration</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    A path variable binds the entire matched path to a single variable using the <code>=</code> operator.
+                </p>
+                <p>Find paths of knows-connections and bind the resulting path to the variable <code>p</code>:</p>
+                <pre><code class="language-sql">MATCH p = (:Wizard)-[:Knows]-&gt;(:Wizard)
+RETURN p</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Path Mode</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    Path modes control how paths are traversed and whether nodes or edges can be revisited. A path mode is placed at the beginning of the path pattern expression.
+                </p>
+                
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Path Mode</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>TRAIL</code></td>
+                            <td><strong>Default.</strong> Edges cannot be repeated within a path. Nodes may be repeated.</td>
+                        </tr>
+                        <tr>
+                            <td><code>ACYCLIC</code></td>
+                            <td>Strictly no repeated nodes are allowed in the path.</td>
+                        </tr>
+                        <tr>
+                            <td><code>SIMPLE</code></td>
+                            <td>No repeated nodes are allowed, except that the starting and ending nodes may be the same (forming a cycle).</td>
+                        </tr>
+                        <tr>
+                            <td><code>WALK</code></td>
+                            <td>No restrictions. Both nodes and edges can be repeated.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h5>Example Query using ACYCLIC:</h5>
+                <pre><code class="language-sql">MATCH p = ACYCLIC (w1:Wizard {name: "Albus"})-[:AlliedWith]-&gt;{1,3}(w2:Wizard)
+RETURN p</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Path Selector</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    A path selector filters the paths returned for each start-end node partition.
+                </p>
+                
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Path Selector</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ALL</code></td>
+                            <td><strong>Default.</strong> Returns all matching paths.</td>
+                        </tr>
+                        <tr>
+                            <td><code>ANY</code></td>
+                            <td>Returns exactly one path for each pair of start and end nodes.</td>
+                        </tr>
+                        <tr>
+                            <td><code>ANY k</code></td>
+                            <td>Returns up to <code>k</code> paths for each start and end node pair.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h5>Example Query using ANY:</h5>
+                <pre><code class="language-sql">MATCH p = ANY (:Wizard {name: "Albus"})-[:AlliedWith]-&gt;{1,3}(target:Wizard)
+RETURN p</code></pre>
+                
+                <h5>Combined Usage:</h5>
+                <p>When using both, the selector must precede the mode (e.g., <code>ANY ACYCLIC</code>):</p>
+                <pre><code class="language-sql">MATCH p = ANY ACYCLIC (:Wizard {name: "Albus"})-[:AlliedWith]-&gt;{1,3}(target:Wizard)
+RETURN p</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-warning">
+        <div class="message-header">
+            <p>Special Considerations</p>
+        </div>
+        <div class="message-body">
+            <div class="content">
+                <p><strong>Edge Juxtaposition:</strong></p>
+                <p>
+                    Consecutive edge patterns implicitly assume an empty node pattern <code>()</code> between them.
+                </p>
+                <pre><code class="language-sql">-- Juxtaposition
+(:Wizard)-[]-&gt;-[]-&gt;(w)
+
+-- Desugars to
+(:Wizard)-[]-&gt;()-[]-&gt;(w)</code></pre>
+                <p class="is-italic">
+                    Note: Avoid juxtaposing tokens that expose minus signs next to each other (e.g. <code>]--[</code> or <code>-&gt;-</code>) as it can be parsed as a comment sign (<code>--</code>).
+                </p>
+            </div>
+        </div>
+    </article>
+</section>

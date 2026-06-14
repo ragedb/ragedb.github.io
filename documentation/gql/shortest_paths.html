@@ -1,0 +1,120 @@
+---
+layout: default
+title: GQL API - Shortest Paths
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            Shortest Paths
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Overview</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Shortest paths between two nodes are those containing the <strong>fewest number of edges</strong> (unweighted shortest path search). In GQL, shortest paths are retrieved using specialized path selectors applied to quantified paths.
+                </p>
+                <p>
+                    When a shortest path selector is used, RageDB's query engine performs a trail-based Breadth-First Search (BFS) where repeated edges are prohibited (the path mode defaults to <code>TRAIL</code>).
+                </p>
+                <p>
+                    To minimize a weighted sum of edge costs (such as mana cost) rather than hop counts, see <a href="/documentation/gql/cheapest_paths.html">Cheapest Paths</a>.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Shortest Path Selectors</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Selector</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ALL SHORTEST</code></td>
+                            <td>Selects all shortest paths from each start-end node partition.</td>
+                        </tr>
+                        <tr>
+                            <td><code>ANY SHORTEST</code></td>
+                            <td>Selects exactly one shortest path from each partition.</td>
+                        </tr>
+                        <tr>
+                            <td><code>SHORTEST k</code></td>
+                            <td>Selects up to <code>k</code> paths from each partition, starting with the absolute shortest. If there are fewer than <code>k</code> shortest paths, it proceeds to select from the next shortest paths (2nd shortest, 3rd shortest, etc.) until <code>k</code> are found.</td>
+                        </tr>
+                        <tr>
+                            <td><code>SHORTEST k GROUP</code></td>
+                            <td>Groups paths by length, sorts them in ascending order, and selects all paths belonging to the first <code>k</code> length groups.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Examples</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                
+                <h4>1. ALL SHORTEST</h4>
+                <p>Find all shortest knows-connection paths between "Albus" and "Draco" (using the <code>+</code> quantifier for 1 or more hops):</p>
+                <pre><code class="language-sql">MATCH p = ALL SHORTEST (a:Wizard {name: "Albus"})-[:Knows]-+(b:Wizard {name: "Draco"})
+RETURN p</code></pre>
+
+                <h4>2. ANY SHORTEST</h4>
+                <p>Find any one shortest path between "Albus" and "Luna" within 1 to 10 hops:</p>
+                <pre><code class="language-sql">MATCH p = ANY SHORTEST (a:Wizard {name: "Albus"})-[:Knows]-{1,10}(b:Wizard {name: "Luna"})
+RETURN p</code></pre>
+
+                <h4>3. SHORTEST k</h4>
+                <p>Find the 2 shortest path connections between "Albus" and "Luna":</p>
+                <pre><code class="language-sql">MATCH p = SHORTEST 2 (a:Wizard {name: "Albus"})-[:Knows]-{1,10}(b:Wizard {name: "Luna"})
+RETURN p</code></pre>
+
+                <h4>4. SHORTEST k GROUP</h4>
+                <p>
+                    Group the paths between "Albus" and "Luna" by length, and return all paths belonging to the 2 shortest lengths found:
+                </p>
+                <pre><code class="language-sql">MATCH p = SHORTEST 2 GROUP (a:Wizard {name: "Albus"})-[:Knows]-{1,10}(b:Wizard {name: "Luna"})
+RETURN p</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-warning">
+        <div class="message-header">
+            <p>Partition-Based Selection Semantics</p>
+        </div>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    When a path pattern matches multiple starting and ending nodes, the matching paths are conceptually **partitioned** by each unique combination of start and end node. The shortest path selection is executed independently within each partition, and the final result set is the union of all partitions.
+                </p>
+                <p>This query finds the shortest path from "Albus" to any other wizard in the graph:</p>
+                <pre><code class="language-sql">MATCH p = SHORTEST 1 ({name: "Albus"})-[:Knows]-{1,10}()
+RETURN p</code></pre>
+                <p>
+                    Since there are multiple reachable target nodes, the result set is partitioned by each reachable wizard, and the single shortest path is returned for each individual target.
+                </p>
+            </div>
+        </div>
+    </article>
+</section>

@@ -1,0 +1,113 @@
+---
+layout: default
+title: GQL API - Overview
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            Overview
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Introduction to GQL in RageDB</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    RageDB provides native, high-performance support for <strong>GQL (Graph Query Language)</strong>, the ISO standard query language for property graphs. Rather than using procedural traversals, GQL allows you to express declarative graph patterns. The query engine automatically compiles, optimizes, and executes these matches across RageDB's sharded, in-memory architecture.
+                </p>
+                <p>
+                    A GQL query uses <strong>Graph Pattern Matching (GPM)</strong> to search for structures in the graph. Patterns are built by combining node patterns, edge patterns, path patterns, and complex graph match modes.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-warning">
+        <h4 class="message-header">Example Schema: Wizarding & Mana Alliance</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Throughout the GQL documentation, all query examples use a shared domain model: the <strong>Wizarding School & Mana Alliance</strong> schema. This model represents wizards, the spells they know or teach, and the channeled mana paths they establish to boost their powers.
+                </p>
+                <h5>Nodes</h5>
+                <ul>
+                    <li><strong>Wizard</strong>: Represents a magic practitioner.
+                        <ul>
+                            <li><code>name</code> (string): The wizard's name (e.g., "Albus", "Severus").</li>
+                            <li><code>level</code> (integer): The magical level/power of the wizard.</li>
+                            <li><code>affinity</code> (string): The elemental magic affinity (e.g., "Fire", "Ice", "Lightning", "Light", "Dark").</li>
+                        </ul>
+                    </li>
+                    <li><strong>Spell</strong>: Represents a magic spell.
+                        <ul>
+                            <li><code>name</code> (string): The spell's name (e.g., "Fireball", "Shield of Light").</li>
+                            <li><code>element</code> (string): The element of the spell (e.g., "Fire", "Ice", "Lightning").</li>
+                            <li><code>base_damage</code> (integer): The spell's baseline damage.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h5>Edges</h5>
+                <ul>
+                    <li><strong>Knows</strong>: Wizard &rarr; Wizard. Social or knowledge link. No properties.</li>
+                    <li><strong>AlliedWith</strong>: Wizard &rarr; Wizard. A channeled mana alliance connection.
+                        <ul>
+                            <li><code>mana_cost</code> (integer): The cost in mana points to sustain the channel.</li>
+                            <li><code>affinity_boost</code> (integer): The boost given to affinity-matching spells.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Teaches</strong>: Wizard &rarr; Spell. Represents academic instruction.
+                        <ul>
+                            <li><code>experience_required</code> (integer): The exp required by a student to learn it.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Initializing the Graph</p>
+        </div>
+        <div class="message-body is-dark">
+            <p>You can populate the database with the example schema using the following GQL <code>INSERT</code> statement:</p>
+            <pre><code class="language-sql">INSERT 
+  (albus:Wizard {name: "Albus", level: 95, affinity: "Light"}),
+  (severus:Wizard {name: "Severus", level: 80, affinity: "Dark"}),
+  (harry:Wizard {name: "Harry", level: 45, affinity: "Light"}),
+  (hermione:Wizard {name: "Hermione", level: 50, affinity: "Light"}),
+  (ron:Wizard {name: "Ron", level: 30, affinity: "Earth"}),
+  (luna:Wizard {name: "Luna", level: 40, affinity: "Air"}),
+  (draco:Wizard {name: "Draco", level: 45, affinity: "Dark"}),
+
+  (fireball:Spell {name: "Fireball", element: "Fire", base_damage: 50}),
+  (frostbolt:Spell {name: "Frostbolt", element: "Ice", base_damage: 45}),
+  (shield_light:Spell {name: "Shield of Light", element: "Light", base_damage: 0}),
+  (shadow_curse:Spell {name: "Shadow Curse", element: "Dark", base_damage: 75}),
+
+  (albus)-[:Knows]->(severus),
+  (harry)-[:Knows]->(hermione),
+  (harry)-[:Knows]->(ron),
+  (ron)-[:Knows]->(luna),
+  (severus)-[:Knows]->(draco),
+
+  (albus)-[:AlliedWith {mana_cost: 5, affinity_boost: 10}]->(harry),
+  (harry)-[:AlliedWith {mana_cost: 10, affinity_boost: 5}]->(hermione),
+  (hermione)-[:AlliedWith {mana_cost: 15, affinity_boost: 8}]->(ron),
+  (ron)-[:AlliedWith {mana_cost: 8, affinity_boost: 3}]->(luna),
+  (draco)-[:AlliedWith {mana_cost: 12, affinity_boost: 6}]->(severus),
+
+  (albus)-[:Teaches {experience_required: 500}]->(shield_light),
+  (severus)-[:Teaches {experience_required: 400}]->(shadow_curse),
+  (hermione)-[:Teaches {experience_required: 200}]->(fireball),
+  (harry)-[:Teaches {experience_required: 150}]->(frostbolt)</code></pre>
+        </div>
+    </article>
+</section>

@@ -1,0 +1,107 @@
+---
+layout: default
+title: GQL API - Questioned Paths
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            Questioned Paths
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Overview</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    A <strong>questioned path</strong> makes a segment of a path pattern optional. It matches either zero or one occurrence of the parenthesized pattern. This is useful when you want to look for optional connections in a path without filtering out results that don't have them.
+                </p>
+                <p>
+                    A questioned path is written by appending a question mark <code>?</code> to a parenthesized path pattern expression.
+                </p>
+                <pre><code class="language-sql">-- Syntax
+( path_pattern_expression )?</code></pre>
+                <p>
+                    When the path exists, it is evaluated and bound to variables; when it doesn't, the match still succeeds, and the variables inside the optional path evaluate to <code>null</code>.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>RageDB Singleton Scalar Binding Semantics</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    A crucial difference exists between using the quantifier <code>{0,1}</code> and the questioned path operator <code>?</code>:
+                </p>
+                <ul>
+                    <li>
+                        <strong><code>{0,1}</code> (Quantified Path)</strong>: Variables declared inside the repeated group are treated as <strong>group variables</strong>. They are always returned as list types (either a single-element list or an empty list).
+                    </li>
+                    <li>
+                        <strong><code>?</code> (Questioned Path)</strong>: Variables declared inside remain <strong>singletons</strong>. They preserve their original scalar types but become conditional singletons. If the optional path is absent, the variable resolves directly to <code>null</code>.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Examples</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    Find all wizards teaching a spell, and optionally retrieve another wizard they are <code>AlliedWith</code> (if one exists):
+                </p>
+                <pre><code class="language-sql">MATCH (w1:Wizard)-[:Teaches]-&gt;(s:Spell) ( -[:AlliedWith]-&gt;(w2:Wizard) )?
+RETURN w1.name AS teacher, s.name AS spell, w2.name AS ally</code></pre>
+                
+                <h5>Example Result Set:</h5>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>teacher</th>
+                            <th>spell</th>
+                            <th>ally</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Albus</td>
+                            <td>Shield of Light</td>
+                            <td>Harry</td>
+                        </tr>
+                        <tr>
+                            <td>Severus</td>
+                            <td>Shadow Curse</td>
+                            <td><code>null</code></td>
+                        </tr>
+                        <tr>
+                            <td>Hermione</td>
+                            <td>Fireball</td>
+                            <td>Ron</td>
+                        </tr>
+                        <tr>
+                            <td>Harry</td>
+                            <td>Frostbolt</td>
+                            <td>Hermione</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Because <code>w2</code> is declared within the questioned path <code>( -[:AlliedWith]-&gt;(w2:Wizard) )?</code>, it remains a singleton scalar. When "Severus" has no outgoing <code>AlliedWith</code> edge, <code>w2.name</code> evaluates directly to <code>null</code> instead of an empty list.
+                </p>
+            </div>
+        </div>
+    </article>
+</section>

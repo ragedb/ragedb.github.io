@@ -1,0 +1,90 @@
+---
+layout: default
+title: GQL API - K-Hop Traversal
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            K-Hop Traversal
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Overview</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    The <strong>K-hop neighbors</strong> of a node are the set of nodes whose shortest path distance from the starting node is exactly <code>K</code>. 
+                </p>
+                <p>
+                    RageDB provides a native <code>MATCH KHOP</code> statement. It is designed for high-performance reachability queries (e.g. "Who is reachable within K hops?") and neighbor counts. Rather than materializing all possible paths, <code>MATCH KHOP</code> tracks only unique reachable target nodes, providing substantial performance improvements over regular path matching.
+                </p>
+                <pre><code class="language-sql">-- Syntax
+MATCH KHOP start_node -[ edge_pattern ]-&gt;{ quantifier } target_node</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Key Properties of MATCH KHOP</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <ul>
+                    <li><strong>Deduplication</strong>: Each destination node is returned at most once per start node, regardless of how many shortest paths lead to it.</li>
+                    <li><strong>Shortest Distance Isolation</strong>: Nodes are categorized by their shortest distance. A node that is reachable at 1 hop will not be returned in a 2-hop search, even if a longer 2-hop path also leads to it.</li>
+                    <li><strong>Cycle Exclusion</strong>: The starting node is excluded from the results, even if a cycle connects it back to itself.</li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-success">
+        <div class="message-header">
+            <p>Count-Only Shard Optimization</p>
+        </div>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    When a <code>MATCH KHOP</code> query is used primarily to count neighbors, and the target node variable is only referenced inside a <code>COUNT(target)</code> or <code>COUNT(*)</code> function, RageDB activates a **count-only execution path**.
+                </p>
+                <p>
+                    Under this optimization, RageDB bypasses node record instantiation and reads directly from the shard indices. This significantly reduces memory allocations and CPU overhead, completing neighbor counts on large graphs almost instantly.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Examples</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                
+                <h4>1. Exact Hop Distance</h4>
+                <p>Find all wizards who are exactly 2 hops away from "Albus" via knows-relationships:</p>
+                <pre><code class="language-sql">MATCH KHOP (a:Wizard {name: "Albus"})-[:Knows]-&gt;{2}(n:Wizard)
+RETURN n.name</code></pre>
+
+                <h4>2. Hop Range Traversal</h4>
+                <p>Find all wizards located within 1 to 2 knows-relationship hops from "Albus":</p>
+                <pre><code class="language-sql">MATCH KHOP (a:Wizard {name: "Albus"})-[:Knows]-&gt;{1,2}(n:Wizard)
+RETURN n.name</code></pre>
+
+                <h4>3. Optimized Count Query</h4>
+                <p>
+                    Count the total number of distinct wizards reachable within 1 to 3 hops from "Albus". This statement automatically triggers the count-only shard optimization:
+                </p>
+                <pre><code class="language-sql">MATCH KHOP (a:Wizard {name: "Albus"})-[:Knows]-&gt;{1,3}(n:Wizard)
+RETURN count(n)</code></pre>
+            </div>
+        </div>
+    </article>
+</section>

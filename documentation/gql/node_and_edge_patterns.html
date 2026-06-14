@@ -1,0 +1,193 @@
+---
+layout: default
+title: GQL API - Node & Edge Patterns
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            Node & Edge Patterns
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Overview</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    Node patterns and edge patterns are collectively referred to as <strong>element patterns</strong>. They are the fundamental building blocks used to construct larger path patterns.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Node Patterns</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    A node pattern matches nodes in the graph and is represented using a pair of parentheses <code>()</code>. A node pattern consists of three optional components:
+                </p>
+                <ol>
+                    <li>Node variable declaration</li>
+                    <li>Label expression</li>
+                    <li>Property specification or inline <code>WHERE</code> clause</li>
+                </ol>
+                <pre><code class="language-sql">-- Syntax
+( [ node_variable ] [ label_expression ] [ property_specification | inline_where_clause ] )</code></pre>
+                
+                <h5>Examples:</h5>
+                <p>Match any node in the graph (simplest empty pattern):</p>
+                <pre><code class="language-sql">()</code></pre>
+                
+                <p>Match <code>Wizard</code> nodes and bind them to the variable <code>w</code>:</p>
+                <pre><code class="language-sql">(w:Wizard)</code></pre>
+                
+                <p>Match nodes with specific property values (using a property specification):</p>
+                <pre><code class="language-sql">({name: "Albus", affinity: "Light"})</code></pre>
+                
+                <p>Match <code>Wizard</code> nodes whose level is greater than 50, binding them to <code>w</code>:</p>
+                <pre><code class="language-sql">(w:Wizard WHERE w.level &gt; 50)</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Edge Patterns</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    Edge patterns match edges in the graph, typically placed between two node patterns. An edge pattern is either a <strong>full edge pattern</strong> or an <strong>abbreviated edge pattern</strong>.
+                </p>
+                
+                <h4>Full Edge Pattern</h4>
+                <p>
+                    Represented using a pair of square brackets <code>[]</code>. It defines an edge's direction (left pointing, right pointing, or undirected) and can include variables, label expressions, and filters:
+                </p>
+                <pre><code class="language-sql">-- Left pointing (incoming)
+&lt;-[ edge_filter ]-
+
+-- Right pointing (outgoing)
+-[ edge_filter ]-&gt;
+
+-- Undirected (any direction)
+-[ edge_filter ]-</code></pre>
+
+                <h5>Examples:</h5>
+                <p>Match all outgoing edges and bind them to the variable <code>e</code>:</p>
+                <pre><code class="language-sql">()-[e]-&gt;()</code></pre>
+                
+                <p>Match outgoing <code>AlliedWith</code> edges where <code>mana_cost</code> is exactly 10, binding them to <code>e</code>:</p>
+                <pre><code class="language-sql">()-[e:AlliedWith {mana_cost: 10}]-&gt;()</code></pre>
+                
+                <p>Match incoming edges where <code>affinity_boost</code> is less than 5, binding them to <code>e</code>:</p>
+                <pre><code class="language-sql">()&lt;-[e WHERE e.affinity_boost &lt; 5]-()</code></pre>
+
+                <h4>Abbreviated Edge Pattern</h4>
+                <p>
+                    Indicates only the direction of the edge. It does not support variables or pattern filtering:
+                </p>
+                <pre><code class="language-sql">-- Syntax: &lt;- or -&gt; or -</code></pre>
+                
+                <h5>Examples:</h5>
+                <p>Match nodes that a <code>Wizard</code> can reach through any outgoing edge:</p>
+                <pre><code class="language-sql">(:Wizard)-&gt;(n)</code></pre>
+                
+                <p>Match all one-hop paths in the graph:</p>
+                <pre><code class="language-sql">p = ()-&gt;()</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Label Expressions</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    A label expression starts with a colon <code>:</code> (or the keyword <code>IS</code>). It specifies one or more labels and supports logical operators:
+                </p>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>!</code></td>
+                            <td>Negation (NOT)</td>
+                        </tr>
+                        <tr>
+                            <td><code>&amp;</code></td>
+                            <td>Conjunction (AND)</td>
+                        </tr>
+                        <tr>
+                            <td><code>|</code></td>
+                            <td>Disjunction (OR)</td>
+                        </tr>
+                        <tr>
+                            <td><code>%</code></td>
+                            <td>Wildcard (Matches any label)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>Examples:</h5>
+                <p>Match nodes that are either a <code>Wizard</code> or a <code>Spell</code>:</p>
+                <pre><code class="language-sql">(n:Wizard|Spell)</code></pre>
+                
+                <p>Match edges that are not <code>Knows</code> connections:</p>
+                <pre><code class="language-sql">()-[e:!Knows]-()</code></pre>
+                
+                <p>Match nodes that have any label:</p>
+                <pre><code class="language-sql">(n:%)</code></pre>
+
+                <p>Match nodes that have no label (unlabeled nodes):</p>
+                <pre><code class="language-sql">(n:!%)</code></pre>
+                
+                <p>Match <code>Wizard</code> nodes that have either the <code>Light</code> or <code>Dark</code> affinity (using grouping parentheses):</p>
+                <pre><code class="language-sql">(w:Wizard&amp;(Light|Dark))</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-danger">
+        <div class="message-header">
+            <p>Common Syntax Errors</p>
+        </div>
+        <div class="message-body">
+            <div class="content">
+                <p><strong>1. Omitting the variable name in an inline WHERE clause:</strong></p>
+                <p>
+                    You must use the dot operator on a declared variable to reference a property inside the <code>WHERE</code> clause. 
+                </p>
+                <pre><code class="language-sql">-- SYNTAX ERROR
+MATCH p = (:Wizard WHERE level &gt; 50)-[]-&gt;()
+
+-- CORRECT
+MATCH p = (w:Wizard WHERE w.level &gt; 50)-[]-&gt;()</code></pre>
+
+                <p><strong>2. Mixing property specification and inline WHERE clauses:</strong></p>
+                <p>
+                    You cannot use both curly brace property specifications and a <code>WHERE</code> clause in the same element pattern.
+                </p>
+                <pre><code class="language-sql">-- SYNTAX ERROR
+MATCH (w:Wizard {name: "Albus"} WHERE w.level &gt; 50)
+
+-- CORRECT
+MATCH (w:Wizard WHERE w.name = "Albus" AND w.level &gt; 50)</code></pre>
+            </div>
+        </div>
+    </article>
+</section>

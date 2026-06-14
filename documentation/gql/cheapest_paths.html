@@ -1,0 +1,117 @@
+---
+layout: default
+title: GQL API - Cheapest Paths
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            Cheapest Paths
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Overview</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    <strong>Cheapest paths</strong> between two nodes are those that minimize the <strong>sum of weights/costs</strong> of the traversed edges. Unlike shortest paths (which minimize the number of hops), cheapest paths use a weighted algorithm (Dijkstra's search) to find the path with the lowest cumulative cost. A cheapest path may therefore involve more edges than the shortest path.
+                </p>
+                <p>
+                    When a cheapest path selector is used, the path mode defaults to <code>TRAIL</code> (no repeated edges).
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Cheapest Path Selectors</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Selector</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ALL CHEAPEST</code></td>
+                            <td>Selects all cheapest paths from each partition.</td>
+                        </tr>
+                        <tr>
+                            <td><code>ANY CHEAPEST</code></td>
+                            <td>Selects exactly one cheapest path from each partition.</td>
+                        </tr>
+                        <tr>
+                            <td><code>CHEAPEST</code></td>
+                            <td>Equivalent to <code>ANY CHEAPEST</code>. Returns one cheapest path.</td>
+                        </tr>
+                        <tr>
+                            <td><code>CHEAPEST k</code></td>
+                            <td>Selects up to <code>k</code> cheapest paths from each partition, proceeding to the next cheapest if a partition has fewer than <code>k</code> paths at the minimum cost.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>The COST Clause</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    To calculate the path cost, you must include a <code>COST</code> clause inside the edge pattern. The <code>COST</code> clause specifies the per-edge weight expression.
+                </p>
+                <pre><code class="language-sql">-- Syntax
+-[ edge_variable [ label_expression ] COST value_expression ]-&gt;</code></pre>
+                
+                <h5>Rules:</h5>
+                <ul>
+                    <li>The <code>COST</code> clause cannot be combined with property specifications (curly braces <code>{}</code>) or inline <code>WHERE</code> clauses in the same edge pattern.</li>
+                    <li>The <code>value_expression</code> can reference edge properties, use arithmetic operators (e.g. <code>e.prop1 + e.prop2</code>), or use constant values.</li>
+                    <li>Negative edge costs are permitted.</li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Examples</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                
+                <h4>1. Minimizing Mana Cost (CHEAPEST)</h4>
+                <p>Find the cheapest path from "Albus" to "Luna" across 1 to 5 AlliedWith edges, minimizing the total <code>mana_cost</code>:</p>
+                <pre><code class="language-sql">MATCH p = CHEAPEST (a:Wizard {name: "Albus"})-[e:AlliedWith COST e.mana_cost]-&gt;{1,5}(d:Wizard {name: "Luna"})
+RETURN p</code></pre>
+
+                <h4>2. Combined Cost Formula (ALL CHEAPEST)</h4>
+                <p>
+                    Find the path that minimizes the net cost of mana, subtracting the affinity boost (utility) of each channel:
+                </p>
+                <pre><code class="language-sql">MATCH p = ALL CHEAPEST (a:Wizard {name: "Albus"})-[e:AlliedWith COST e.mana_cost - e.affinity_boost]-&gt;{1,5}(d:Wizard {name: "Luna"})
+RETURN p</code></pre>
+
+                <h4>3. Constant Cost Degeneracy</h4>
+                <p>
+                    Providing a constant cost of <code>1</code> per edge forces Dijkstra's algorithm to behave like standard BFS, finding the path with the fewest hops:
+                </p>
+                <pre><code class="language-sql">MATCH p = CHEAPEST (a:Wizard {name: "Albus"})-[e:AlliedWith COST 1]-&gt;{1,5}(d:Wizard {name: "Luna"})
+RETURN p</code></pre>
+            </div>
+        </div>
+    </article>
+</section>

@@ -1,0 +1,126 @@
+---
+layout: default
+title: GQL API - Graph Patterns & Modes
+---
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">
+            GQL API
+        </p>
+        <p class="subtitle">
+            Graph Patterns & Modes
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <article class="message is-info">
+        <h4 class="message-header">Overview</h4>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    A <strong>graph pattern</strong> matches structures in the graph. It consists of three parts:
+                </p>
+                <ol>
+                    <li>Match mode (optional)</li>
+                    <li>Path pattern list (comma-separated list of path patterns)</li>
+                    <li>Global <code>WHERE</code> clause (optional)</li>
+                </ol>
+                <pre><code class="language-sql">-- Syntax
+[ match_mode ] path_pattern_1, path_pattern_2, ... [ WHERE global_expression ]</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Connected vs. Disconnected Path Lists</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    When multiple path patterns are supplied in a comma-separated list, GQL evaluates them and combines the results:
+                </p>
+
+                <h4>1. Connected Paths (Equi-Joins)</h4>
+                <p>
+                    If the path patterns share one or more variables, the query engine performs an <strong>equi-join</strong> on those variables, returning only records where the bound elements are identical.
+                </p>
+                <p>Find wizards who are common knows-connections of "Albus" and "Draco" and also teach a spell:</p>
+                <pre><code class="language-sql">MATCH ({name: "Albus"})-[:Knows]-&gt;(u:Wizard)&lt;-[:Knows]-({name: "Draco"}),
+      (u)-[:Teaches]-&gt;(s:Spell)
+RETURN u.name AS common_friend, s.name AS spell</code></pre>
+                <p>
+                    Here, the variable <code>u</code> is declared in both path patterns. GQL joins the records on <code>u</code>.
+                </p>
+
+                <h4>2. Disconnected Paths (Cartesian Product)</h4>
+                <p>
+                    If the path patterns share no common variables, the query engine performs a <strong>Cartesian product</strong>, pairing every record from the first match with every record from the second.
+                </p>
+                <pre><code class="language-sql">MATCH (w1:Wizard {affinity: "Light"}), (w2:Wizard {affinity: "Dark"})
+RETURN w1.name, w2.name</code></pre>
+                <p class="is-italic">
+                    Warning: Cartesian products can generate large result sets and increase query execution times. Avoid disconnected path patterns unless explicitly necessary.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-primary">
+        <div class="message-header">
+            <p>Match Modes</p>
+        </div>
+        <div class="message-body is-dark">
+            <div class="content">
+                <p>
+                    Match modes determine whether edges or nodes can be repeated across matched paths in a single record.
+                </p>
+                
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Match Mode</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>DIFFERENT EDGES</code></td>
+                            <td><strong>Default.</strong> Repeated edges are strictly prohibited in the same match record. Nodes may be repeated.</td>
+                        </tr>
+                        <tr>
+                            <td><code>REPEATABLE ELEMENTS</code></td>
+                            <td>No restrictions. Both nodes and edges can be repeated.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>Example Scenario:</h5>
+                <p>Consider two wizards connected by multiple relationships, or a cycle. Using different modes yields different behaviors:</p>
+                <pre><code class="language-sql">-- Finds paths utilizing distinct edges:
+MATCH DIFFERENT EDGES (w1:Wizard)-[e1]-(n), (n)-[e2]-(w2)
+RETURN w1.name, w2.name</code></pre>
+                <pre><code class="language-sql">-- Permits e1 and e2 to match the exact same edge:
+MATCH REPEATABLE ELEMENTS (w1:Wizard)-[e1]-(n), (n)-[e2]-(w2)
+RETURN w1.name, w2.name</code></pre>
+            </div>
+        </div>
+    </article>
+
+    <article class="message is-danger">
+        <div class="message-header">
+            <p>Variable Reuse Restrictions in DIFFERENT EDGES</p>
+        </div>
+        <div class="message-body">
+            <div class="content">
+                <p>
+                    In <code>DIFFERENT EDGES</code> mode, because edges must be unique, reusing an edge variable at different positions in the match pattern will always fail to return records:
+                </p>
+                <pre><code class="language-sql">-- RETURNS ZERO RESULTS (e cannot be bound to two different edges simultaneously)
+MATCH DIFFERENT EDGES ()-[e]-&gt;(), ()&lt;-[e]-()
+RETURN e</code></pre>
+            </div>
+        </div>
+    </article>
+</section>
